@@ -2,7 +2,7 @@
 	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 	<changeSet author="tcvuong" id="1509209802456">
-		<createTable tableName="Accounts">
+		<createTable tableName="accounts">
 			<column name="id" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
@@ -10,12 +10,295 @@
 			<column name="customer_id" type="VARCHAR(255)" />
 			<column name="account_name" type="TEXT" />
 			<column name="date_opened" type="date" />
-			<column name="currency_code" type="VARCHAR(255)" />		
+			<column name="currency_code" type="VARCHAR(255)" />
 			<column name="date_closed" type="date" />
 			<column name="current_balance" type="numeric" />
 			<column name="status" type="VARCHAR(255)" />
 			<column name="created_at" type="date" />
 			<column name="updated_at" type="date" />
 		</createTable>
+		<createTable tableName="account_types">
+			<column name="type_code" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="TEXT" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="events">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="account_id" type="VARCHAR(255)" />
+			<column name="type_code" type="VARCHAR(255)" />
+			<column name="date" type="date" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="event_types">
+			<column name="type_code" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="TEXT" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="balance_history">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="date" type="date" />
+			<column name="account_id" type="VARCHAR(255)" />
+			<column name="balance" type="numeric" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="cards">
+			<column name="card_number" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="type_code" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="card_types">
+			<column name="type_code" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="TEXT" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="accounts_cards">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="account_id" type="VARCHAR(255)" />
+			<column name="card_id" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="plan">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="type_code" type="VARCHAR(255)" />
+			<column name="limit" type="numeric" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="plan_types">
+			<column name="type_code" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="TEXT" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="accounts_plan">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="account_id" type="VARCHAR(255)" />
+			<column name="plan_id" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="transactions">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="account_id" type="VARCHAR(255)" />
+			<column name="related_transaction_id" type="VARCHAR(255)" />
+			<column name="type_code" type="VARCHAR(255)" />
+			<column name="date" type="date" />
+			<column name="currency_code" type="VARCHAR(255)" />
+			<column name="amount" type="numeric" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="transaction_types">
+			<column name="type_code" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="TEXT" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="currency_codes">
+			<column name="code" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="TEXT" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="customers">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="type_code" type="VARCHAR(255)" />
+			<column name="cif_number" type="VARCHAR(255)" />
+			<column name="name" type="VARCHAR(255)" />
+			<column name="phone" type="VARCHAR(255)" />
+			<column name="email" type="VARCHAR(255)" />
+			<column name="date_of_birth" type="date" />
+			<column name="gender" type="VARCHAR(10)" />
+			<column name="identify_number" type="VARCHAR(255)" />
+			<column name="date_became_customer" type="date" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="customer_types">
+			<column name="type_code" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="TEXT" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="addresses">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="type_code" type="VARCHAR(255)" />
+			<column name="line_1" type="VARCHAR(255)" />
+			<column name="line_2" type="VARCHAR(255)" />
+			<column name="city" type="VARCHAR(255)" />
+			<column name="zip_code" type="numeric" />
+			<column name="state_province" type="VARCHAR(255)" />
+			<column name="country" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="address_types">
+			<column name="type_code" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="TEXT" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="customer_addresses">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="customer_id" type="VARCHAR(255)" />
+			<column name="address_id" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="merchants">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(255)" />
+			<column name="phone" type="VARCHAR(255)" />
+			<column name="email" type="VARCHAR(255)" />
+			<column name="address_id" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="discount_by_tier">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="discount_rate" type="numeric" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="merchant_discount_by_tier">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="merchant_id" type="VARCHAR(255)" />
+			<column name="discount_id" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="discount_by_time">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="start_date" type="date" />
+			<column name="end_date" type="date" />
+			<column name="discount_rate" type="numeric" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
+		<createTable tableName="merchant_discount_by_time">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="merchant_id" type="VARCHAR(255)" />
+			<column name="discount_id" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="date" />
+			<column name="updated_at" type="date" />
+		</createTable>
 	</changeSet>
+	<changeSet author="tcvuong" id="1509282370469">
+		<addPrimaryKey columnNames="id" constraintName="pk_accounts" tableName="accounts"/>
+		<addPrimaryKey columnNames="type_code" constraintName="pk_account_types" tableName="account_types"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_events" tableName="events"/>
+		<addPrimaryKey columnNames="type_code" constraintName="pk_event_types" tableName="event_types"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_balance_history" tableName="balance_history"/>
+		<addPrimaryKey columnNames="card_number" constraintName="pk_cards" tableName="cards"/>
+		<addPrimaryKey columnNames="type_code" constraintName="pk_card_types" tableName="card_types"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_accounts_cards" tableName="accounts_cards"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_plan" tableName="plan"/>
+		<addPrimaryKey columnNames="type_code" constraintName="pk_plan_types" tableName="plan_types"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_accounts_plan" tableName="accounts_plan"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_transactions" tableName="transactions"/>
+		<addPrimaryKey columnNames="type_code" constraintName="pk_transaction_types" tableName="transaction_types"/>
+		<addPrimaryKey columnNames="code" constraintName="pk_currency_codes" tableName="currency_codes"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_customers" tableName="customers"/>
+		<addPrimaryKey columnNames="type_code" constraintName="pk_customer_types" tableName="customer_types"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_addresses" tableName="addresses"/>
+		<addPrimaryKey columnNames="type_code" constraintName="pk_address_types" tableName="address_types"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_customer_addresses" tableName="customer_addresses"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_merchants" tableName="merchants"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_discount_by_tier" tableName="discount_by_tier"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_merchant_discount_by_tier" tableName="merchant_discount_by_tier"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_discount_by_time" tableName="discount_by_time"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_merchant_discount_by_time" tableName="merchant_discount_by_time"/>
+	</changeSet>
+	<changeSet author="tcvuong" id="1509283607484">
+		<addForeignKeyConstraint baseTableName="accounts" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="account_types" constraintName="fk_accounts_account_types" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="accounts" baseColumnNames="customer_id" referencedColumnNames="id" referencedTableName="customers" constraintName="fk_accounts_customers" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="accounts" baseColumnNames="currency_code" referencedColumnNames="code" referencedTableName="currency_codes" constraintName="fk_accounts_currency_code" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="events" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="event_types" constraintName="fk_events_event_types" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="events" baseColumnNames="account_id" referencedColumnNames="id" referencedTableName="accounts" constraintName="fk_events_accounts" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="balance_history" baseColumnNames="account_id" referencedColumnNames="id" referencedTableName="accounts" constraintName="fk_balance_history_accounts" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="cards" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="card_types" constraintName="fk_cards_card_types" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="accounts_cards" baseColumnNames="account_id" referencedColumnNames="id" referencedTableName="accounts" constraintName="fk_accounts_cards_accounts" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="accounts_cards" baseColumnNames="card_id" referencedColumnNames="card_number" referencedTableName="cards" constraintName="fk_accounts_cards_cards" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="plan" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="plan_types" constraintName="fk_plan_plan_types" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="accounts_plan" baseColumnNames="account_id" referencedColumnNames="id" referencedTableName="accounts" constraintName="fk_account_plan_account" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="accounts_plan" baseColumnNames="plan_id" referencedColumnNames="id" referencedTableName="plan" constraintName="fk_account_plan_plan" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="transactions" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="transaction_types" constraintName="fk_tramsactions_tramsaction_types" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="transactions" baseColumnNames="account_id" referencedColumnNames="id" referencedTableName="accounts" constraintName="fk_tramsactions_account" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="transactions" baseColumnNames="related_transaction_id" referencedColumnNames="id" referencedTableName="transactions" constraintName="fk_tramsactions_transactions" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="transactions" baseColumnNames="currency_code" referencedColumnNames="code" referencedTableName="currency_codes" constraintName="fk_tramsactions_currency_code" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="customers" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="customer_types" constraintName="fk_customers_customer_types" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="addresses" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="address_types" constraintName="fk_addresses_address_types" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="customer_addresses" baseColumnNames="customer_id" referencedColumnNames="id" referencedTableName="customers" constraintName="fk_customers_addresses_customers" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="customer_addresses" baseColumnNames="address_id" referencedColumnNames="id" referencedTableName="addresses" constraintName="fk_customers_addresses_addresses" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="merchants" baseColumnNames="address_id" referencedColumnNames="id" referencedTableName="addresses" constraintName="fk_merchants_addresses" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="merchant_discount_by_tier" baseColumnNames="merchant_id" referencedColumnNames="id" referencedTableName="merchants" constraintName="fk_merchants_discount_by_tier_merchants" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="merchant_discount_by_tier" baseColumnNames="discount_id" referencedColumnNames="id" referencedTableName="discount_by_tier" constraintName="fk_merchants_discount_by_tier_discount_by_tier" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="merchant_discount_by_time" baseColumnNames="merchant_id" referencedColumnNames="id" referencedTableName="merchants" constraintName="fk_merchants_discount_by_time_merchants" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="merchant_discount_by_time" baseColumnNames="discount_id" referencedColumnNames="id" referencedTableName="discount_by_time" constraintName="fk_merchants_discount_by_time_discount_by_time" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+  </changeSet>
 </databaseChangeLog>

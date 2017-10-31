@@ -9,21 +9,21 @@
 			<column name="type_code" type="VARCHAR(255)" />
 			<column name="customer_id" type="VARCHAR(255)" />
 			<column name="account_name" type="TEXT" />
-			<column name="date_opened" type="date" />
+			<column name="date_opened" type="DATETIME" />
 			<column name="currency_code" type="VARCHAR(255)" />
-			<column name="date_closed" type="date" />
-			<column name="current_balance" type="numeric" />
+			<column name="date_closed" type="DATETIME" />
+			<column name="current_balance" type="NUMERIC" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="account_type">
 			<column name="type_code" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 			<column name="description" type="TEXT" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="event">
 			<column name="id" type="VARCHAR(255)">
@@ -31,27 +31,27 @@
 			</column>
 			<column name="account_id" type="VARCHAR(255)" />
 			<column name="type_code" type="VARCHAR(255)" />
-			<column name="date" type="date" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="date" type="DATETIME" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="event_type">
 			<column name="type_code" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 			<column name="description" type="TEXT" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="balance_history">
 			<column name="id" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
-			<column name="date" type="date" />
+			<column name="date" type="DATETIME" />
 			<column name="account_id" type="VARCHAR(255)" />
-			<column name="balance" type="numeric" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="balance" type="NUMERIC" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="card">
 			<column name="card_number" type="VARCHAR(255)">
@@ -59,16 +59,16 @@
 			</column>
 			<column name="type_code" type="VARCHAR(255)" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="card_type">
 			<column name="type_code" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 			<column name="description" type="TEXT" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="account_card">
 			<column name="id" type="VARCHAR(255)">
@@ -77,26 +77,26 @@
 			<column name="account_id" type="VARCHAR(255)" />
 			<column name="card_id" type="VARCHAR(255)" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="plan">
 			<column name="id" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 			<column name="type_code" type="VARCHAR(255)" />
-			<column name="limit" type="numeric" />
+			<column name="limit" type="NUMERIC" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="plan_type">
 			<column name="type_code" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 			<column name="description" type="TEXT" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="account_plan">
 			<column name="id" type="VARCHAR(255)">
@@ -105,8 +105,8 @@
 			<column name="account_id" type="VARCHAR(255)" />
 			<column name="plan_id" type="VARCHAR(255)" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="transaction">
 			<column name="id" type="VARCHAR(255)">
@@ -115,27 +115,27 @@
 			<column name="account_id" type="VARCHAR(255)" />
 			<column name="related_transaction_id" type="VARCHAR(255)" />
 			<column name="type_code" type="VARCHAR(255)" />
-			<column name="date" type="date" />
+			<column name="date" type="DATETIME" />
 			<column name="currency_code" type="VARCHAR(255)" />
-			<column name="amount" type="numeric" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="amount" type="NUMERIC" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="transaction_type">
 			<column name="type_code" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 			<column name="description" type="TEXT" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="currency_code">
 			<column name="code" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 			<column name="name" type="TEXT" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="customer">
 			<column name="id" type="VARCHAR(255)">
@@ -146,21 +146,21 @@
 			<column name="name" type="VARCHAR(255)" />
 			<column name="phone" type="VARCHAR(255)" />
 			<column name="email" type="VARCHAR(255)" />
-			<column name="date_of_birth" type="date" />
+			<column name="date_of_birth" type="DATETIME" />
 			<column name="gender" type="VARCHAR(10)" />
 			<column name="identify_number" type="VARCHAR(255)" />
-			<column name="date_became_customer" type="date" />
+			<column name="date_became_customer" type="DATETIME" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="customer_type">
 			<column name="type_code" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 			<column name="description" type="TEXT" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="address">
 			<column name="id" type="VARCHAR(255)">
@@ -170,20 +170,20 @@
 			<column name="line_1" type="VARCHAR(255)" />
 			<column name="line_2" type="VARCHAR(255)" />
 			<column name="city" type="VARCHAR(255)" />
-			<column name="zip_code" type="numeric" />
+			<column name="zip_code" type="NUMERIC" />
 			<column name="state_province" type="VARCHAR(255)" />
 			<column name="country" type="VARCHAR(255)" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="address_type">
 			<column name="type_code" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
 			<column name="description" type="TEXT" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="customer_address">
 			<column name="id" type="VARCHAR(255)">
@@ -192,8 +192,8 @@
 			<column name="customer_id" type="VARCHAR(255)" />
 			<column name="address_id" type="VARCHAR(255)" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="merchant">
 			<column name="id" type="VARCHAR(255)">
@@ -204,17 +204,17 @@
 			<column name="email" type="VARCHAR(255)" />
 			<column name="address_id" type="VARCHAR(255)" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="discount_by_tier">
 			<column name="id" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
-			<column name="discount_rate" type="numeric" />
+			<column name="discount_rate" type="NUMERIC" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="merchant_discount_by_tier">
 			<column name="id" type="VARCHAR(255)">
@@ -223,19 +223,19 @@
 			<column name="merchant_id" type="VARCHAR(255)" />
 			<column name="discount_id" type="VARCHAR(255)" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="discount_by_time">
 			<column name="id" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
-			<column name="start_date" type="date" />
-			<column name="end_date" type="date" />
-			<column name="discount_rate" type="numeric" />
+			<column name="start_date" type="DATETIME" />
+			<column name="end_date" type="DATETIME" />
+			<column name="discount_rate" type="NUMERIC" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 		<createTable tableName="merchant_discount_by_time">
 			<column name="id" type="VARCHAR(255)">
@@ -244,8 +244,8 @@
 			<column name="merchant_id" type="VARCHAR(255)" />
 			<column name="discount_id" type="VARCHAR(255)" />
 			<column name="status" type="VARCHAR(255)" />
-			<column name="created_at" type="date" />
-			<column name="updated_at" type="date" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
 		</createTable>
 	</changeSet>
 	<changeSet author="tcvuong" id="1509282370469">

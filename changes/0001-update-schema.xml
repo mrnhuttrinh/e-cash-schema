@@ -1,0 +1,135 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="tcvuong" id="1509806791038">
+		<createTable tableName="scms_sync_detail">
+			<column name="personalization_code" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="sync_code" type="VARCHAR(255)" />
+			<column name="personalization_date" type="DATETIME" />
+			<column name="customer_id" type="VARCHAR(255)" />
+			<column name="card_code" type="VARCHAR(255)" />
+			<column name="effective_date" type="DATETIME" />
+			<column name="currency_code" type="VARCHAR(255)" />
+			<column name="expiry_date" type="DATETIME" />
+			<column name="personalization_status" type="VARCHAR(255)" />
+			<column name="organization_code" type="VARCHAR(255)" />
+			<column name="organization_short_name" type="VARCHAR(255)" />
+			<column name="member_code" type="VARCHAR(255)" />
+			<column name="member_last_name" type="VARCHAR(255)" />
+			<column name="member_first_name" type="VARCHAR(255)" />
+			<column name="gender" type="NUMERIC" />
+			<column name="birthdate" type="DATETIME" />
+			<column name="country_code" type="VARCHAR(255)" />
+			<column name="identity_card_number" type="VARCHAR(255)" />
+			<column name="identity_card_issuing_date" type="DATETIME" />
+			<column name="identity_card_issuing_authority" type="VARCHAR(255)" />
+			<column name="passport_number" type="VARCHAR(255)" />
+			<column name="passport_issuing_date" type="DATETIME" />
+			<column name="passport_expiry_date" type="DATETIME" />
+			<column name="passport_card_issuing_authority" type="VARCHAR(255)" />
+			<column name="temporary_address" type="VARCHAR(255)" />
+			<column name="permanent_address" type="VARCHAR(255)" />
+			<column name="email" type="VARCHAR(255)" />
+			<column name="phone_number_1" type="VARCHAR(255)" />
+			<column name="phone_number_2" type="VARCHAR(255)" />
+			<column name="occupation" type="VARCHAR(255)" />
+			<column name="title" type="VARCHAR(255)" />
+			<column name="position" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="scms_sync">
+			<column name="sync_code" type="VARCHAR(255)" >
+				<constraints nullable="false" />
+			</column>
+			<column name="sync_time" type="DATETIME" />
+			<column name="finish_flag" type="BOOLEAN" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="organization">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="short_name" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="customer_identify_documents">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="customer_id" type="VARCHAR(255)" />
+			<column name="identify_document_id" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="identify_document">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="type_code" type="VARCHAR(255)" />
+			<column name="description" type="VARCHAR(255)" />
+			<column name="number" type="VARCHAR(255)" />
+			<column name="date_of_issue" type="DATETIME" />
+			<column name="date_of_expiry" type="DATETIME" />
+			<column name="place_of_issue" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="identify_document_type">
+			<column name="type_code" type="VARCHAR(255)" >
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<dropColumn columnName="name" tableName="customer"/>
+		<dropColumn columnName="phone" tableName="customer"/>
+		<dropColumn columnName="identify_number" tableName="customer"/>
+		<dropColumn columnName="gender" tableName="customer"/>
+		<addColumn tableName="customer">
+			<column name="organization_id" type="varchar(255)"/>
+			<column name="first_name" type="VARCHAR(255)" />
+			<column name="last_name" type="VARCHAR(255)" />
+			<column name="phone_1" type="VARCHAR(255)" />
+			<column name="phone_2" type="VARCHAR(255)" />
+			<column name="gender" type="NUMERIC" />
+			<column name="country_code" type="VARCHAR(255)" />
+			<column name="occupation" type="VARCHAR(255)" />
+			<column name="title" type="VARCHAR(255)" />
+			<column name="position" type="VARCHAR(255)" />
+			<column name="scms_member_code" type="VARCHAR(255)" />
+		</addColumn>
+		<addColumn tableName="card">
+			<column name="card_code" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="effective_date" type="DATETIME"/>
+			<column name="expiry_date" type="DATETIME"/>
+		</addColumn>
+	</changeSet>
+	<changeSet author="tcvuong" id="1509808561337">
+		<addPrimaryKey columnNames="personalization_code" constraintName="pk_scms_sync_detail" tableName="scms_sync_detail"/>
+		<addPrimaryKey columnNames="sync_code" constraintName="pk_scms_sync" tableName="scms_sync"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_customer_identify_documents" tableName="customer_identify_documents"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_identify_document" tableName="identify_document"/>
+		<addPrimaryKey columnNames="type_code" constraintName="pk_identify_document_type" tableName="identify_document_type"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_organization" tableName="organization"/>
+	</changeSet>
+	<changeSet author="tcvuong" id="1509809105492">
+		<addForeignKeyConstraint baseTableName="scms_sync_detail" baseColumnNames="sync_code" referencedColumnNames="sync_code" referencedTableName="scms_sync" constraintName="fk_scms_sync_detail_scms_sync" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="customer" baseColumnNames="organization_id" referencedColumnNames="id" referencedTableName="organization" constraintName="fk_customer_organization" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="customer_identify_documents" baseColumnNames="identify_document_id" referencedColumnNames="id" referencedTableName="identify_document" constraintName="fk_customer_identify_document_identify_document" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="identify_document" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="identify_document_type" constraintName="fk_identify_document_identify_document_type" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="customer_identify_documents" baseColumnNames="customer_id" referencedColumnNames="id" referencedTableName="customer" constraintName="fk_customer_identify_documents_customer" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+	</changeSet>
+</databaseChangeLog>

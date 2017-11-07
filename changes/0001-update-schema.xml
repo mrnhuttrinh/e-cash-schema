@@ -1,0 +1,157 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="tcvuong" id="1509806791038">
+		<createTable tableName="scms_sync">
+			<column name="id" type="VARCHAR(255)" >
+				<constraints nullable="false" />
+			</column>
+			<column name="sync_code" type="VARCHAR(255)" >
+				<constraints nullable="false" />
+			</column>
+			<column name="sync_time" type="DATETIME" />
+			<column name="finish_flag" type="BOOLEAN" />
+			<column name="sync_details" type="jsonb" >
+				<constraints nullable="false" />
+			</column>
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="organization">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="short_name" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="customer_identify_document">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="customer_id" type="VARCHAR(255)" />
+			<column name="identify_document_id" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="identify_document">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="type_code" type="VARCHAR(255)" />
+			<column name="description" type="VARCHAR(255)" />
+			<column name="number" type="VARCHAR(255)" />
+			<column name="date_of_issue" type="DATETIME" />
+			<column name="date_of_expiry" type="DATETIME" />
+			<column name="place_of_issue" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="identify_document_type">
+			<column name="type_code" type="VARCHAR(255)" >
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<dropColumn columnName="name" tableName="customer"/>
+		<dropColumn columnName="phone" tableName="customer"/>
+		<dropColumn columnName="identify_number" tableName="customer"/>
+		<dropColumn columnName="gender" tableName="customer"/>
+		<addColumn tableName="customer">
+			<column name="organization_id" type="VARCHAR(255)"/>
+			<column name="first_name" type="VARCHAR(255)" />
+			<column name="last_name" type="VARCHAR(255)" />
+			<column name="phone_1" type="VARCHAR(255)" />
+			<column name="phone_2" type="VARCHAR(255)" />
+			<column name="gender" type="NUMERIC" />
+			<column name="scms_member_code" type="VARCHAR(255)"/>
+			<column name="country_code" type="VARCHAR(255)"/>
+			<column name="occupation" type="VARCHAR(255)"/>
+			<column name="title" type="VARCHAR(255)"/>
+			<column name="position" type="VARCHAR(255)"/>
+		</addColumn>
+		<addColumn tableName="card">
+			<column name="card_code" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="effective_date" type="DATETIME"/>
+			<column name="expiry_date" type="DATETIME"/>
+		</addColumn>
+	</changeSet>
+	<changeSet author="tcvuong" id="1509808561337">
+		<addPrimaryKey columnNames="id" constraintName="pk_scms_sync" tableName="scms_sync"/>
+		<addPrimaryKey columnNames="customer_id" constraintName="pk_customer_identify_document" tableName="customer_identify_document"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_identify_document" tableName="identify_document"/>
+		<addPrimaryKey columnNames="type_code" constraintName="pk_identify_document_type" tableName="identify_document_type"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_organization" tableName="organization"/>
+	</changeSet>
+	<changeSet author="tcvuong" id="1509809105492">
+		<addForeignKeyConstraint baseTableName="customer" baseColumnNames="organization_id" referencedColumnNames="id" referencedTableName="organization" constraintName="fk_customer_organization" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="customer_identify_document" baseColumnNames="identify_document_id" referencedColumnNames="id" referencedTableName="identify_document" constraintName="fk_customer_identify_document_identify_document" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="identify_document" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="identify_document_type" constraintName="fk_identify_document_identify_document_type" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="customer_identify_document" baseColumnNames="customer_id" referencedColumnNames="id" referencedTableName="customer" constraintName="fk_customer_identify_document_customer" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+	</changeSet>
+	<changeSet author="vmtan" id="1509981090221-clean-up">
+		<addUniqueConstraint tableName="customer" columnNames="scms_member_code" constraintName="scms_member_code_uc" deferrable="false" initiallyDeferred="false"/>
+		<dropForeignKeyConstraint baseTableName="transaction" constraintName="fk_transaction_currency-code"/>
+		<dropColumn columnName="cif_number" tableName="customer"/>
+		<dropColumn columnName="currency_code" tableName="transaction"/>
+	</changeSet>
+	<changeSet author="vmtan" id="1509981090221-add-transaction_detail">
+		<createTable tableName="transaction_detail">
+			<column name="transaction_id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="product_type" type="VARCHAR(255)" />
+			<column name="product_details" type="jsonb" />
+			<column name="merchant_id	" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<addPrimaryKey columnNames="transaction_id" constraintName="pk_transaction_detail" tableName="transaction_detail"/>
+		<addForeignKeyConstraint baseTableName="transaction_detail" baseColumnNames="transaction_id" referencedColumnNames="id" referencedTableName="transaction" constraintName="fk_transaction_detail" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+	</changeSet>
+	<changeSet author="vmtan" id="1509981090221-add-card_history">
+		<createTable tableName="card_history">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="card_number" type="VARCHAR(255)" >
+				<constraints nullable="false" />
+			</column>
+			<column name="history_type" type="VARCHAR(255)" >
+				<constraints nullable="false" />
+			</column>
+			<column name="history_details" type="jsonb" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="history_type">
+			<column name="type" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(255)" >
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<addPrimaryKey columnNames="type" constraintName="pk_history_type" tableName="history_type"/>
+		<addPrimaryKey columnNames="id" constraintName="pk_card_history" tableName="card_history"/>
+		<addForeignKeyConstraint baseTableName="card_history" baseColumnNames="card_number" referencedColumnNames="card_number" referencedTableName="card" constraintName="fk_card_history" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="card_history" baseColumnNames="history_type" referencedColumnNames="type" referencedTableName="history_type" constraintName="fk_history_type" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+	</changeSet>
+
+</databaseChangeLog>

@@ -11,7 +11,7 @@
 			</column>
 			<column name="sync_time" type="DATETIME" />
 			<column name="finish_flag" type="BOOLEAN" />
-			<column name="sync_details" type="jsonb" >
+			<column name="sync_details" type="TEXT" >
 				<constraints nullable="false" />
 			</column>
 			<column name="status" type="VARCHAR(255)" />
@@ -86,7 +86,7 @@
 	</changeSet>
 	<changeSet author="tcvuong" id="1509808561337">
 		<addPrimaryKey columnNames="id" constraintName="pk_scms_sync" tableName="scms_sync"/>
-		<addPrimaryKey columnNames="customer_id" constraintName="pk_customer_identify_document" tableName="customer_identify_document"/>
+		<addPrimaryKey columnNames="identify_document_id" constraintName="pk_customer_identify_document" tableName="customer_identify_document"/>
 		<addPrimaryKey columnNames="id" constraintName="pk_identify_document" tableName="identify_document"/>
 		<addPrimaryKey columnNames="type_code" constraintName="pk_identify_document_type" tableName="identify_document_type"/>
 		<addPrimaryKey columnNames="id" constraintName="pk_organization" tableName="organization"/>

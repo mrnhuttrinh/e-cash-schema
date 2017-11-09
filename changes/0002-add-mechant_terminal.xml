@@ -1,0 +1,41 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="duyviec" id="1509806791039">
+		<createTable tableName="merchant_terminal">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="pub_key" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="secret_key" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="merchant_id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+	</changeSet>
+	<changeSet author="duyviec" id="1509806791040">
+		<addPrimaryKey columnNames="id" constraintName="pk_merchant_terminal"
+			tableName="merchant_terminal" />
+	</changeSet>
+	<changeSet author="duyviec" id="1509806791041">
+		<addForeignKeyConstraint baseTableName="merchant_terminal"
+			baseColumnNames="merchant_id" referencedColumnNames="id"
+			referencedTableName="merchant" constraintName="fk_merchant_terminal-merchant"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" />
+	</changeSet>
+	<changeSet author="duyviec" id="1509806791042">
+		<addUniqueConstraint tableName="merchant_terminal"
+			columnNames="pub_key" constraintName="unique_merchant_terminal_pub_key"
+			deferrable="true" disabled="true" initiallyDeferred="true" />
+		<addUniqueConstraint tableName="merchant_terminal"
+			columnNames="secret_key" constraintName="unique_merchant_terminal_secret_key"
+			deferrable="true" disabled="true" initiallyDeferred="true" />
+	</changeSet>
+</databaseChangeLog>

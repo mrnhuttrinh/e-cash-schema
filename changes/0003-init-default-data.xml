@@ -1,0 +1,151 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="vmtan" id="1510136520553-add_account_history">
+		<createTable tableName="account_history">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="account_id" type="VARCHAR(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="history_type" type="VARCHAR(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="history_details" type="jsonb"/>
+			<column name="status" type="VARCHAR(255)"/>
+			<column name="created_at" type="DATETIME"/>
+			<column name="updated_at" type="DATETIME"/>
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="pk_account_history" tableName="account_history"/>
+		<addForeignKeyConstraint
+			baseTableName="account_history"
+			baseColumnNames="history_type"
+			referencedColumnNames="type"
+			referencedTableName="history_type"
+			constraintName="fk_account_history_type"
+			deferrable="false"
+			initiallyDeferred="false"
+			onDelete="NO ACTION"
+			onUpdate="NO ACTION"/>
+	</changeSet>
+	<changeSet author="vmtan" id="1510136520553-add_display_name_for_all_type">
+		<addColumn tableName="customer_type">
+			<column name="display_name" type="varchar(255)"/>
+		</addColumn>
+		<addColumn tableName="account_type">
+			<column name="display_name" type="varchar(255)"/>
+		</addColumn>
+		<addColumn tableName="address_type">
+			<column name="display_name" type="varchar(255)"/>
+		</addColumn>
+		<addColumn tableName="card_type">
+			<column name="display_name" type="varchar(255)"/>
+		</addColumn>
+		<addColumn tableName="event_type">
+			<column name="display_name" type="varchar(255)"/>
+		</addColumn>
+		<addColumn tableName="history_type">
+			<column name="display_name" type="varchar(255)"/>
+		</addColumn>
+		<addColumn tableName="identify_document_type">
+			<column name="display_name" type="varchar(255)"/>
+		</addColumn>
+		<addColumn tableName="plan_type">
+			<column name="display_name" type="varchar(255)"/>
+		</addColumn>
+		<addColumn tableName="transaction_type">
+			<column name="display_name" type="varchar(255)"/>
+		</addColumn>
+	</changeSet>
+	<changeSet author="vmtan" id="1510136520553-insert-data-customer_type">
+		<insert tableName="customer_type">
+			<column name="type_code" value="DEFAULT"/>
+			<column name="description" value="Mặc định"/>
+			<column name="display_name" value="Mặc định"/>
+		</insert>
+		<insert tableName="customer_type">
+			<column name="type_code" value="STUDENT"/>
+			<column name="description" value="Sinh viên"/>
+			<column name="display_name" value="Sinh viên"/>
+		</insert>
+		<insert tableName="customer_type">
+			<column name="type_code" value="STAFF"/>
+			<column name="description" value="Nhân viên"/>
+			<column name="display_name" value="Nhân viên"/>
+		</insert>
+	</changeSet>
+	<changeSet author="vmtan" id="1510136520553-insert-data-address_type">
+		<insert tableName="address_type">
+			<column name="type_code" value="DEFAULT"/>
+			<column name="description" value="Mặc định"/>
+			<column name="display_name" value="Mặc định"/>
+		</insert>
+		<insert tableName="address_type">
+			<column name="type_code" value="RESIDENT"/>
+			<column name="description" value="Địa chỉ thường trú ghi trên CMND"/>
+			<column name="display_name" value="Thường trú"/>
+		</insert>
+		<insert tableName="address_type">
+			<column name="type_code" value="TEMPORARY"/>
+			<column name="description" value="Địa chỉ tạm trú"/>
+			<column name="display_name" value="Tạm trú"/>
+		</insert>
+	</changeSet>
+	<changeSet author="vmtan" id="1510136520553-insert-data-account_type">
+		<insert tableName="account_type">
+			<column name="type_code" value="DEFAULT"/>
+			<column name="description" value="Mặc định"/>
+			<column name="display_name" value="Mặc định"/>
+		</insert>
+	</changeSet>
+	<changeSet author="vmtan" id="1510136520553-insert-data-card_type">
+		<insert tableName="card_type">
+			<column name="type_code" value="DEFAULT"/>
+			<column name="description" value="Mặc định"/>
+			<column name="display_name" value="Mặc định"/>
+		</insert>
+	</changeSet>
+	<changeSet author="vmtan" id="1510136520553-insert-data-transaction_type">
+		<insert tableName="transaction_type">
+			<column name="type_code" value="DEPOSIT"/>
+			<column name="description" value="Gởi tiền"/>
+			<column name="display_name" value="Gởi tiền"/>
+		</insert>
+		<insert tableName="transaction_type">
+			<column name="type_code" value="EXPENSE"/>
+			<column name="description" value="Chi tiêu"/>
+			<column name="display_name" value="Chi tiêu"/>
+		</insert>
+		<insert tableName="transaction_type">
+			<column name="type_code" value="PAYMENT"/>
+			<column name="description" value="Thanh toán"/>
+			<column name="display_name" value="Thanh toán"/>
+		</insert>
+	</changeSet>
+	<changeSet author="vmtan" id="1510136520553-insert-data-history_type">
+		<insert tableName="history_type">
+			<column name="type" value="CREATED"/>
+			<column name="description" value="Khởi tạo"/>
+			<column name="name" value="Khởi tạo"/>
+		</insert>
+		<insert tableName="history_type">
+			<column name="type" value="UPDATED"/>
+			<column name="description" value="Cập nhật thông tin tài khoản"/>
+			<column name="name" value="Được cập nhật"/>
+		</insert>
+		<insert tableName="history_type">
+			<column name="type" value="DELETED"/>
+			<column name="description" value="Bị xoá"/>
+			<column name="name" value="Bị xoá"/>
+		</insert>
+	</changeSet>
+	<changeSet author="vmtan" id="1510136520553-insert-data-currency_code">
+		<insert tableName="currency_code">
+			<column name="code" value="vnd"/>
+			<column name="name" value="VND"/>
+		</insert>
+	</changeSet>
+</databaseChangeLog>

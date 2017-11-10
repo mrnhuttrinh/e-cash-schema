@@ -1,0 +1,24 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="duyviec" id="1510150247897">
+		<dropUniqueConstraint constraintName="unique_merchant_terminal_secret_key"
+			schemaName="public" tableName="merchant_terminal" uniqueColumns="secret_key" />
+		<dropColumn columnName="secret_key" schemaName="public"
+			tableName="merchant_terminal" />
+	</changeSet>
+	<changeSet author="duyviec" id="1510150247898">
+		<dropUniqueConstraint constraintName="unique_merchant_terminal_pub_key"
+			schemaName="public" tableName="merchant_terminal" uniqueColumns="pub_key" />
+		<dropColumn columnName="pub_key" schemaName="public"
+			tableName="merchant_terminal" />
+	</changeSet>
+	<changeSet author="duyviec" id="1510150247899">
+		<addColumn schemaName="public" tableName="merchant_terminal">
+			<column name="pub_key" type="bytea" />
+		</addColumn>
+		<addUniqueConstraint tableName="merchant_terminal"
+			columnNames="pub_key" constraintName="unique_merchant_terminal_pub_key"
+			deferrable="true" disabled="true" initiallyDeferred="true" />
+	</changeSet>
+</databaseChangeLog>

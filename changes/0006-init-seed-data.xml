@@ -4,7 +4,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
   <changeSet author="vmtan" id="1510339565505-1">
-    <loadData encoding="UTF-8" file="data/organization.csv" tableName="organization">
+    <loadData encoding="UTF-8" file="data/0006/organization.csv" tableName="organization">
       <column name="id" type="STRING"/>
       <column name="short_name" type="STRING"/>
       <column name="created_at" type="DATE"/>
@@ -15,7 +15,7 @@
     </rollback>
   </changeSet>
   <changeSet author="vmtan" id="1510339565505-2">
-    <loadData encoding="UTF-8" file="data/customers.csv" tableName="customer">
+    <loadData encoding="UTF-8" file="data/0006/customers.csv" tableName="customer">
       <column name="id" type="STRING"/>
       <column name="type_code" type="STRING"/>
       <column name="email" type="STRING"/>
@@ -41,7 +41,7 @@
     </rollback>
   </changeSet>
   <changeSet author="vmtan" id="1510339565505-3">
-    <loadData encoding="UTF-8" file="data/accounts.csv" tableName="account">
+    <loadData encoding="UTF-8" file="data/0006/accounts.csv" tableName="account">
       <column name="id" type="STRING"/>
       <column name="type_code" type="STRING"/>
       <column name="customer_id" type="STRING"/>
@@ -59,7 +59,7 @@
     </rollback>
   </changeSet>
   <changeSet author="vmtan" id="1510339565505-4">
-    <loadData encoding="UTF-8" file="data/cards.csv" tableName="card">
+    <loadData encoding="UTF-8" file="data/0006/cards.csv" tableName="card">
       <column name="card_number" type="STRING"/>
       <column name="type_code" type="STRING"/>
       <column name="status" type="STRING"/>
@@ -74,7 +74,7 @@
     </rollback>
   </changeSet>
   <changeSet author="vmtan" id="1510339565505-5">
-    <loadData encoding="UTF-8" file="data/address.csv" tableName="address">
+    <loadData encoding="UTF-8" file="data/0006/address.csv" tableName="address">
       <column name="id" type="STRING"/>
       <column name="type_code" type="STRING"/>
       <column name="line_1" type="STRING"/>
@@ -93,7 +93,7 @@
     </rollback>
   </changeSet>
   <changeSet author="vmtan" id="1510339565505-6">
-    <loadData encoding="UTF-8" file="data/customer_address.csv" tableName="customer_address">
+    <loadData encoding="UTF-8" file="data/0006/customer_address.csv" tableName="customer_address">
       <column name="id" type="STRING"/>
       <column name="customer_id" type="STRING"/>
       <column name="address_id" type="STRING"/>
@@ -106,7 +106,7 @@
     </rollback>
   </changeSet>
   <changeSet author="vmtan" id="1510339565505-7">
-    <loadData encoding="UTF-8" file="data/account_card.csv" tableName="account_card">
+    <loadData encoding="UTF-8" file="data/0006/account_card.csv" tableName="account_card">
       <column name="id" type="STRING"/>
       <column name="account_id" type="STRING"/>
       <column name="card_id" type="STRING"/>

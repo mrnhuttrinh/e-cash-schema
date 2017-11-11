@@ -1,0 +1,53 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="vmtan" id="1510339565505-1">
+    <loadData encoding="UTF-8" file="data/0007/merchant_address.csv" tableName="address">
+      <column name="id" type="STRING"/>
+      <column name="type_code" type="STRING"/>
+      <column name="line_1" type="STRING"/>
+      <column name="line_2" type="STRING"/>
+      <column name="city" type="STRING"/>
+      <column name="zip_code" type="STRING"/>
+      <column name="state_province" type="STRING"/>
+      <column name="country" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="country" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <!-- <rollback>
+      <delete tableName="address"/>
+    </rollback> -->
+  </changeSet>
+  <changeSet author="vmtan" id="1510389507970-2">
+    <loadData encoding="UTF-8" file="data/0007/merchant.csv" tableName="merchant">
+      <column name="id" type="STRING"/>
+      <column name="name" type="STRING"/>
+      <column name="phone" type="STRING"/>
+      <column name="email" type="STRING"/>
+      <column name="address_id" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="merchant"/>
+    </rollback>
+  </changeSet>
+  <changeSet author="vmtan" id="1510389507970-3">
+    <loadData encoding="UTF-8" file="data/0007/terminal.csv" tableName="merchant_terminal">
+      <column name="id" type="STRING"/>
+      <column name="pub_key" type="STRING"/>
+      <column name="pub_key_expire_date" type="DATE"/>
+      <column name="merchant_id" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="merchant_terminal"/>
+    </rollback>
+  </changeSet>
+</databaseChangeLog>

@@ -105,4 +105,17 @@
       <delete tableName="customer_address"/>
     </rollback>
   </changeSet>
+  <changeSet author="vmtan" id="1510339565505-7">
+    <loadData encoding="UTF-8" file="data/account_card.csv" tableName="account_card">
+      <column name="id" type="STRING"/>
+      <column name="account_id" type="STRING"/>
+      <column name="card_id" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="account_card"/>
+    </rollback>
+  </changeSet>
 </databaseChangeLog>

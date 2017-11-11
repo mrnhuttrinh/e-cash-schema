@@ -8,7 +8,7 @@ mvn liquibase:update
 mvn liquibase:dropAll
 
 ### Default configuration:
-url=jdbc:postgresql://localhost:5432/ecash
+url=jdbc:postgresql://localhost:5434/ecash
 
 username=ecash
 

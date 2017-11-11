@@ -6,12 +6,10 @@
 			<column name="id" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
-			<column name="pub_key" type="VARCHAR(255)">
+			<column name="pub_key" type="TEXT">
 				<constraints nullable="false" />
 			</column>
-			<column name="secret_key" type="VARCHAR(255)">
-				<constraints nullable="false" />
-			</column>
+			<column name="pub_key_expire_date" type="DATETIME"/>
 			<column name="merchant_id" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
@@ -33,9 +31,6 @@
 	<changeSet author="duyviec" id="1509806791042">
 		<addUniqueConstraint tableName="merchant_terminal"
 			columnNames="pub_key" constraintName="unique_merchant_terminal_pub_key"
-			deferrable="true" disabled="true" initiallyDeferred="true" />
-		<addUniqueConstraint tableName="merchant_terminal"
-			columnNames="secret_key" constraintName="unique_merchant_terminal_secret_key"
 			deferrable="true" disabled="true" initiallyDeferred="true" />
 	</changeSet>
 </databaseChangeLog>

@@ -109,7 +109,7 @@
 				<constraints nullable="false" />
 			</column>
 			<column name="product_type" type="VARCHAR(255)" />
-			<column name="product_details" type="jsonb" />
+			<column name="product_details" type="TEXT" />
 			<column name="merchant_id	" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
@@ -131,7 +131,7 @@
 			<column name="history_type" type="VARCHAR(255)" >
 				<constraints nullable="false" />
 			</column>
-			<column name="history_details" type="jsonb" />
+			<column name="history_details" type="TEXT" />
 			<column name="status" type="VARCHAR(255)" />
 			<column name="created_at" type="DATETIME" />
 			<column name="updated_at" type="DATETIME" />

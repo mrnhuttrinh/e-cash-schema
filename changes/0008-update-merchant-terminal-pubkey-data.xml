@@ -1,0 +1,21 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="duyviec" id="7636207c-c706-11e7-abc4-cec278b6b50a">
+		<update schemaName="public" tableName="merchant_terminal">
+			<column name="pub_key" type="TEXT"
+				value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsL+7lEbK1lqrqid2JZ47nPThOCYtIPiOh/EV3kYwxotjeNJ1jY+JwYr0O5FGdO4e1Y1yZyxknHJhBSHE2cYj8+cm0iourNyAtNGT+yXR7EqzpHeGpTGWEf953hTATOcPwlvvdS7i0lTtEZussTJ5S6spEE2ymt9T8G0LnuK9+bPIfVNiM+OhLpkgYqp1/H8fgaUzehLa+8zZf2tQod0RetzEoD4F/iak6s3Tj1lMkhvKv1Hm9jwpZSo8dR9KAAz0BRe6IGD7zN0OQ6L7hm+dTAATqe8UxRJhpy7eH3dkucs5E9gEIZLeDMl8ygd1nzvwklOrMcSGnE1fbAaHU3pH8QIDAQAB" />
+			<where>id = '288816b1-369d-4d3f-8396-111111111111'</where>
+		</update>
+		<update schemaName="public" tableName="merchant_terminal">
+            <column name="pub_key" type="TEXT"
+                value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhjJlFINzSEjSUuqmdT9o0mN7GkePuASaFSJr7PbuXhu1NdTT8PeNBrh9kSrTFL9XkeLJbcD/t71DHm4YYGwb5z6n8fnuFt3nm6McaP0DOI/MmMMqTETlidbo1gZC0Sxnh0XqkrHBlwZ/2LMthiJWNMe41XNmLvc0yCOsSy7hXZTwvY2Tdh8hn97zAkglSQOrgZrBOgcJddqaokRP7BOZ6ZPzn44riJgtphmSV2byixMDkiP6XZBSMAoI35m93rdDE3n+DwBEPubKDSLhNQ91Z7LTkp99WKM5DYfyGuF1u/dIEnJpGp4qpBxBp5Z1Ynm2eeX2YyjK2suZk1bgP/TPVQIDAQAB" />
+            <where>id = '288816b1-369d-4d3f-8396-222222222222'</where>
+        </update>
+        <update schemaName="public" tableName="merchant_terminal">
+            <column name="pub_key" type="TEXT"
+                value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm2EPVEXMgVevyaA+V4vA0AgKj7ii0CGFEyUZS0tkKdoMdZvhOyiNAIMWb1YEemTNbRBJkHp/RzU1CcRCik3ygjj/D66BGKC4QMn2iOjQWEdhOMhSWLUrkse97TvuLGpQ/OFPJA48LUhyrylVHTpX3Qe23AodFFqUa4KhpI+l5E6idJePIcth/vlSSmhg05YO0jkMDSeK/lbBmGJmK5LNxt1XAMYRxNFYjnJmrfmpY1NTP2aIARIucibogOWHk0tUDEXvWx3t0O47ywMc8Mxq2Ep7RST1uCyieKMmX2JJ5a8iVuOofDXbCrDOCDqs+/KD/yc3oKmh1w9WErrLcQvqCQIDAQAB" />
+            <where>id = '288816b1-369d-4d3f-8396-333333333333'</where>
+        </update>
+	</changeSet>
+</databaseChangeLog>

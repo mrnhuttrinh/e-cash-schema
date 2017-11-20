@@ -1,0 +1,54 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="tcvuong" id="1511192451649">
+		<createTable tableName="customer_history">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="customer_id" type="VARCHAR(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="history_type" type="VARCHAR(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="history_details" type="TEXT"/>
+			<column name="status" type="VARCHAR(255)"/>
+			<column name="created_at" type="DATETIME"/>
+			<column name="updated_at" type="DATETIME"/>
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="pk_customer_history" tableName="customer_history"/>
+		<addForeignKeyConstraint
+			baseTableName="customer_history"
+			baseColumnNames="history_type"
+			referencedColumnNames="type"
+			referencedTableName="history_type"
+			constraintName="fk_account_history_type"
+			deferrable="false"
+			initiallyDeferred="false"
+			onDelete="NO ACTION"
+			onUpdate="NO ACTION"/>
+		<addForeignKeyConstraint
+			baseTableName="customer_history"
+			baseColumnNames="customer_id"
+			referencedColumnNames="id"
+			referencedTableName="customer"
+			constraintName="fk_customer_history_customer"
+			deferrable="false"
+			initiallyDeferred="false"
+			onDelete="NO ACTION"
+			onUpdate="NO ACTION"/>
+  </changeSet>
+	<changeSet author="tcvuong" id="1511192651649">
+		<addForeignKeyConstraint
+			baseTableName="account_history"
+			baseColumnNames="account_id"
+			referencedColumnNames="id"
+			referencedTableName="account"
+			constraintName="fk_account_history_account"
+			deferrable="false"
+			initiallyDeferred="false"
+			onDelete="NO ACTION"
+			onUpdate="NO ACTION"/>
+  </changeSet>
+</databaseChangeLog>

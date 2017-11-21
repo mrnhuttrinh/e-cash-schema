@@ -1,0 +1,11 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="vmtan" id="1511159943013-insert-data-account_type">
+		<insert tableName="account_type">
+			<column name="type_code" value="DEBIT"/>
+			<column name="description" value="Ghi nợ"/>
+			<column name="display_name" value="Ghi nợ"/>
+		</insert>
+	</changeSet>
+</databaseChangeLog>

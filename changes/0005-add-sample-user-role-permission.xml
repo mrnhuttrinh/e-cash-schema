@@ -1,0 +1,65 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="mrnhutrinh" id="1510247069700">
+    <insert tableName="permission">
+      <column name="id" value="ff8081815fa1bc2a015fa1bc64630000"/>
+      <column name="name" value="READ"/>
+    </insert>
+    <insert tableName="permission">
+      <column name="id" value="ff8081815fa1bc2a015fa1bc647d0001"/>
+      <column name="name" value="WRITE"/>
+    </insert>
+    <insert tableName="permission">
+      <column name="id" value="ff8081815fa1bc2a015fa1bc64800002"/>
+      <column name="name" value="FULL_CONTROL"/>
+    </insert>
+
+    <insert tableName="role">
+      <column name="id" value="ff8081815fa1bc2a015fa1bc64870003"/>
+      <column name="name" value="ADMIN"/>
+    </insert>
+    <insert tableName="role">
+      <column name="id" value="70be5dd3841c4aa5a3c17841cb2e00af"/>
+      <column name="name" value="USER"/>
+    </insert>
+    
+    <insert tableName="roles_permissions">
+      <column name="role_id" value="ff8081815fa1bc2a015fa1bc64870003"/>
+      <column name="permission_id" value="ff8081815fa1bc2a015fa1bc64800002"/>
+    </insert>
+    <insert tableName="roles_permissions">
+      <column name="role_id" value="70be5dd3841c4aa5a3c17841cb2e00af"/>
+      <column name="permission_id" value="ff8081815fa1bc2a015fa1bc64630000"/>
+    </insert>
+
+    <insert tableName="user_account">
+      <column name="id" value="6dad4cb7438d4a308ce49bfb04157245"/>
+      <column name="username" value="admin"/>
+      <column name="first_name" value="John"/>
+      <column name="last_name" value="Smith"/>
+      <column name="email" value="admin@ecash.com"/>
+      <column name="enabled" value="0"/>
+      <column name="is_2fa" value="0"/>
+    </insert>
+    <insert tableName="user_account">
+      <column name="id" value="b9c5140149dc4b25a26b372240ffa555"/>
+      <column name="username" value="cmsuser"/>
+      <column name="first_name" value="Ryan"/>
+      <column name="last_name" value="Renorld"/>
+      <column name="email" value="cmsuser@ecash.com"/>
+      <column name="enabled" value="0"/>
+      <column name="is_2fa" value="0"/>
+    </insert>
+    
+    <insert tableName="users_roles">
+      <column name="user_id" value="6dad4cb7438d4a308ce49bfb04157245"/>
+      <column name="role_id" value="ff8081815fa1bc2a015fa1bc64870003"/>
+    </insert>
+    <insert tableName="users_roles">
+      <column name="user_id" value="b9c5140149dc4b25a26b372240ffa555"/>
+      <column name="role_id" value="70be5dd3841c4aa5a3c17841cb2e00af"/>
+    </insert>
+    
+	</changeSet>
+</databaseChangeLog>

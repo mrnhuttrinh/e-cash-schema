@@ -1,10 +1,13 @@
-# The database for E-Cash ###
+# The database for E-Cash
 
 
-### to run:
+### To run:
 mvn liquibase:update
 
-### default configuration:
+### To drop data
+mvn liquibase:dropAll
+
+### Default configuration:
 url=jdbc:postgresql://localhost:5432/ecash
 
 username=ecash

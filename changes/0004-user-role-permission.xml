@@ -1,0 +1,85 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="mrnhutrinh" id="1510150247895">
+		<createTable tableName="user_account">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="username" type="VARCHAR(255)" />
+			<column name="first_name" type="VARCHAR(255)" />
+			<column name="last_name" type="VARCHAR(255)" />
+			<column name="email" type="VARCHAR(255)" />
+			<column name="password" type="VARCHAR(255)" />
+			<column name="enabled" type="boolean" />
+			<column name="is_2fa" type="boolean" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="users_roles">
+			<!-- <column name="id" type="VARCHAR(255)"> <constraints nullable="false" 
+				/> </column> -->
+			<column name="user_id" type="VARCHAR(255)" />
+			<column name="role_id" type="VARCHAR(255)" />
+			<!-- <column name="created_at" type="DATETIME" /> <column name="updated_at" 
+				type="DATETIME" /> -->
+		</createTable>
+		<createTable tableName="role">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+		<createTable tableName="roles_permissions">
+			<!-- <column name="id" type="VARCHAR(255)"> <constraints nullable="false" 
+				/> </column> -->
+			<column name="role_id" type="VARCHAR(255)" />
+			<column name="permission_id" type="VARCHAR(255)" />
+			<!-- <column name="created_at" type="DATETIME" /> <column name="updated_at" 
+				type="DATETIME" /> -->
+		</createTable>
+		<createTable tableName="permission">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+	</changeSet>
+	<changeSet author="mrnhuttrinh" id="1510150604931">
+		<addPrimaryKey columnNames="id" constraintName="pk_user_account"
+			tableName="user_account" />
+		<!-- <addPrimaryKey columnNames="id" constraintName="pk_users_roles" tableName="users_roles"/> -->
+		<addPrimaryKey columnNames="id" constraintName="pk_role"
+			tableName="role" />
+		<!-- <addPrimaryKey columnNames="id" constraintName="pk_roles_permissions" 
+			tableName="roles_permissions"/> -->
+		<addPrimaryKey columnNames="id" constraintName="pk_permission"
+			tableName="permission" />
+	</changeSet>
+	<changeSet author="mrnhuttrinh" id="1510150715830">
+		<addForeignKeyConstraint baseTableName="users_roles"
+			baseColumnNames="user_id" referencedColumnNames="id"
+			referencedTableName="user_account" constraintName="fk_users_roles_user_account"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="users_roles"
+			baseColumnNames="role_id" referencedColumnNames="id"
+			referencedTableName="role" constraintName="fk_users_roles_role"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="roles_permissions"
+			baseColumnNames="role_id" referencedColumnNames="id"
+			referencedTableName="role" constraintName="fk_roles_permisisons_role"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" />
+		<addForeignKeyConstraint baseTableName="roles_permissions"
+			baseColumnNames="permission_id" referencedColumnNames="id"
+			referencedTableName="permission" constraintName="fk_roles_permisisons_permission"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" />
+	</changeSet>
+</databaseChangeLog>

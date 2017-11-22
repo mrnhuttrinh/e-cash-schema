@@ -1,0 +1,25 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<!-- TODO: We will remove after testing -->
+	<changeSet author="vmtan" id="1511347576931">
+		<update schemaName="public" tableName="merchant">
+			<column name="name" type="VARCHAR(255)"
+				value="Smart World" />
+			<where>id = '0f57bb0a-3cd6-47ec-ad95-111111111111'</where>
+		</update>
+		<insert tableName="merchant_terminal">
+			<column name="id" value="288816b1-369d-4d3f-8396-444444444444"/>
+			<column name="pub_key" type="TEXT" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1aF6BMTJuJYESuhZfF3PPmfekLflNtLJjge6SYj1defAnwV/mC+6EuEVx/L9g5wIkZzjqeHXe6SZnpdLkQBMm7HRtnS6j1sXVWeV3w6iI4u2S8y5ZbylJ5jho9nDtM86iMtF4Lp79VFhU5gRXgD1PqfebWVQVWUINBWyrfJe87eci/yToVqJ7Nj75+03/9OsK2tQBPBHVqD3fxZJ2UoGRfuDWQHoT6kQVE2y0njhJ0HeYrYflcHS82xC8CDnkWWcjSYuYqJKLzo6ZnIgpYAMg1HNzxjDjenifWYThLHNsr4eER9UWvjiZHJk20rivos5ZOaQz4aBpaPF3OUSlPBIjQIDAQAB"/>
+			<column name="merchant_id" value="0f57bb0a-3cd6-47ec-ad95-111111111111"/>
+			<column name="pub_key_expire_date" value="2017-12-11 16:08:22.765000"/>
+			<column name="created_at" value="2017-11-11 16:08:22.765000"/>
+			<column name="updated_at" value="2017-11-11 16:08:22.765000"/>
+		</insert>
+		<update schemaName="public" tableName="card">
+			<column name="card_code" type="VARCHAR(255)"
+				value="01020304050607" />
+			<where> card_number = 'SND-2211-1111'</where>
+		</update>
+	</changeSet>
+</databaseChangeLog>

@@ -1,0 +1,12 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<!-- TODO: We will remove after testing -->
+	<changeSet author="nthehung" id="1511347576931">
+    <insert tableName="transaction_type">
+      <column name="type_code" value="REFUND"/>
+      <column name="description" value="Hoàn tiền"/>
+      <column name="display_name" value="Hoàn tiền"/>
+    </insert>
+	</changeSet>
+</databaseChangeLog>

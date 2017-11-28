@@ -1,0 +1,4 @@
+type,name,description,status,created_at,updated_at,display_name
+PASSWORD_CHANGED,Đổi mật khẩu,Đổi mật khẩu,null,null,null,null
+LOCKED,Khóa người dùng,Khóa người dùng đang hoạt động,null,null,null,null
+UNLOCKED,Mở khóa,Người dùng đã được mở khóa,null,null,null,null

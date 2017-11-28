@@ -1,0 +1,89 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="mrnhuttrinh" id="b0a08b0f-1f1c-4425-a6c9-c20a981eec29">
+    <createTable tableName="user_history">
+      <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_by" type="VARCHAR(255)" />
+      <column name="user_id" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="history_type" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+    <addPrimaryKey columnNames="id" constraintName="pk_user_history" tableName="user_history"/>
+    <addForeignKeyConstraint
+      baseTableName="user_history"
+      baseColumnNames="history_type"
+      referencedColumnNames="type"
+      referencedTableName="history_type"
+      constraintName="fk_user_account_history_type"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="NO ACTION"
+      onUpdate="NO ACTION"/>
+    <addForeignKeyConstraint
+      baseTableName="user_history"
+      baseColumnNames="user_id"
+      referencedColumnNames="id"
+      referencedTableName="user_account"
+      constraintName="fk_user_history_user_account"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="NO ACTION"
+      onUpdate="NO ACTION"/>
+    <addForeignKeyConstraint
+      baseTableName="user_history"
+      baseColumnNames="created_by"
+      referencedColumnNames="id"
+      referencedTableName="user_account"
+      constraintName="fk_created_by_user_history_user_account"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="NO ACTION"
+      onUpdate="NO ACTION"/>
+  </changeSet>
+
+  <changeSet author="mrnhuttrinh" id="cc2e3f93-106c-4324-86dc-34efb229bf9d">
+    <addColumn
+            schemaName="public"
+            tableName="user_account">
+        <column name="last_login" type="DATETIME"/>
+    </addColumn>
+  </changeSet>
+
+  <changeSet author="mrnhuttrinh" id="eebd376d-faed-4b10-8417-83f4af4c32b6">
+    <loadData encoding="UTF-8" file="data/0018/history_type.csv" tableName="history_type">
+      <column name="type" type="STRING"/>
+      <column name="name" type="STRING"/>
+      <column name="description" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+      <column name="display_name" type="STRING"/>
+    </loadData>
+    <rollback>
+      <delete tableName="history_c6bb6f90-b12c-4bd7-b463-6b81d848e244type"/>
+    </rollback>
+  </changeSet>
+
+  <changeSet author="mrnhuttrinh" id="c6bb6f90-b12c-4bd7-b463-6b81d848e244">
+    <loadData encoding="UTF-8" file="data/0018/user_account_history.csv" tableName="user_history">
+      <column name="id" type="STRING"/>
+      <column name="created_by" type="STRING"/>
+      <column name="user_id" type="STRING"/>
+      <column name="history_type" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="user_history"/>
+    </rollback>
+  </changeSet>
+
+</databaseChangeLog>

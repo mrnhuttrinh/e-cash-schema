@@ -1,0 +1,32 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="mrnhuttrinh" id="c491a629-e544-4cce-8881-72236d3057c5">
+    <delete
+            schemaName="public"
+            tableName="user_history">
+    </delete>
+  </changeSet>
+  
+  <changeSet author="mrnhuttrinh" id="cc2e3f93-106c-4324-86dc-34efb229bf9d">
+    <addColumn
+            schemaName="public"
+            tableName="user_history">
+        <column name="history_details" type="TEXT"/>
+    </addColumn>
+  </changeSet>
+  
+  <changeSet author="mrnhuttrinh" id="49254e7f-e691-4071-8206-7d95d8ad881a">
+    <loadData encoding="UTF-8" file="data/0019/user-history.csv" tableName="user_history">
+      <column name="id" type="STRING"/>
+      <column name="created_by" type="STRING"/>
+      <column name="user_id" type="STRING"/>
+      <column name="history_type" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="user_history"/>
+    </rollback>
+  </changeSet>
+</databaseChangeLog>

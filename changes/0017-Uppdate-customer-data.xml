@@ -1,0 +1,70 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="tcvuong" id="151160060000">
+    <loadData encoding="UTF-8" file="data/0017/identify_document_type.csv" tableName="identify_document_type">
+      <column name="type_code" type="STRING"/>
+      <column name="description" type="STRING"/>
+      <column name="description" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+      <column name="display_name" type="STRING"/>
+    </loadData>
+		<rollback>
+      <delete tableName="identify_document_type"/>
+    </rollback>
+  </changeSet>
+	<changeSet author="tcvuong" id="1511600641111">
+    <loadData encoding="UTF-8" file="data/0017/identify_document.csv" tableName="identify_document">
+      <column name="id" type="STRING"/>
+      <column name="type_code" type="STRING"/>
+      <column name="description" type="STRING"/>
+      <column name="number" type="STRING"/>
+      <column name="date_of_issue" type="DATE"/>
+      <column name="date_of_expiry" type="DATE"/>
+      <column name="place_of_issue" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="identify_document"/>
+    </rollback>
+  </changeSet>
+	<changeSet author="tcvuong" id="1511600652222">
+    <loadData encoding="UTF-8" file="data/0017/customer_identify_document.csv" tableName="customer_identify_document">
+      <column name="id" type="STRING"/>
+      <column name="customer_id" type="STRING"/>
+      <column name="identify_document_id" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="customer_identify_document"/>
+    </rollback>
+  </changeSet>
+	<changeSet author="tcvuong" id="1511600663333">
+    <loadData encoding="UTF-8" file="data/0017/history_type.csv" tableName="history_type">
+      <column name="type" type="STRING"/>
+      <column name="name" type="STRING"/>
+      <column name="description" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+      <column name="display_name" type="STRING"/>
+    </loadData>
+    <rollback>
+      <delete tableName="history_type"/>
+    </rollback>
+  </changeSet>
+	<changeSet author="tcvuong" id="1511600674444">
+		<sqlFile encoding="utf8"
+            endDelimiter="\nGO"
+            path="../data/0017/customer_history.sql"
+            relativeToChangelogFile="true"
+            splitStatements="true"
+            stripComments="true"/>
+  </changeSet>
+</databaseChangeLog>

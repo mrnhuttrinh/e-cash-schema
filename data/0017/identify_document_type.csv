@@ -1,0 +1,3 @@
+type_code,description,status,created_at,updated_at,display_name
+IDENTIFY_CARD,Chứng minh nhân dân,ACTIVE,2017-11-25 15:39:15,null,CMND
+PASSPORT_CARD,Passport,ACTIVE,2017-11-25 15:40:30,null,Passport

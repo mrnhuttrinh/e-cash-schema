@@ -6,10 +6,11 @@
 			<column name="id" type="VARCHAR(255)">
 				<constraints nullable="false" />
 			</column>
+			<column name="type" type="VARCHAR(50)" />
 			<column name="category" type="VARCHAR(50)" />
 			<column name="status" type="VARCHAR(50)" />
-			<column name="parameters" type="TEXT" />
-			<column name="return_value" type="TEXT" />
+			<column name="parameter" type="TEXT" />
+			<column name="result" type="TEXT" />
 			<column name="created_at" type="DATETIME" />
 			<column name="updated_at" type="DATETIME" />
 		</createTable>

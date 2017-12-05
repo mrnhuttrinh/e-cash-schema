@@ -1,0 +1,86 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="vmtan" id="1512105854174">
+    <dropTable tableName="account_plan"></dropTable>
+  </changeSet>
+  <changeSet author="vmtan" id="1512105854174-1">
+    <insert tableName="plan_type">
+      <column name="type_code" value="DEFAULT"/>
+      <column name="description" value="Mặc định"/>
+      <column name="display_name" value="Mặc định"/>
+    </insert>
+    <insert tableName="plan">
+      <column name="id" value="00000000-0000-0000-0000-000000000000"/>
+      <column name="type_code" value="DEFAULT"/>
+    </insert>
+    <addColumn tableName="account">
+      <column
+        name="plan_id"
+        type="varchar(255)"
+        defaultValue="00000000-0000-0000-0000-000000000000"
+      />
+    </addColumn>
+    <addForeignKeyConstraint
+			baseTableName="account"
+			baseColumnNames="plan_id"
+			referencedColumnNames="id"
+			referencedTableName="plan"
+			constraintName="fk_account_plan"
+			deferrable="false"
+			initiallyDeferred="false"
+			onDelete="NO ACTION"
+			onUpdate="NO ACTION"/>
+  </changeSet>
+  <changeSet author="vmtan" id="1512105854174-2">
+    <dropTable tableName="account_card"></dropTable>
+    <addColumn tableName="card">
+      <column
+        name="customer_id"
+        type="varchar(255)"
+      />
+    </addColumn>
+    <addForeignKeyConstraint
+			baseTableName="card"
+			baseColumnNames="customer_id"
+			referencedColumnNames="id"
+			referencedTableName="customer"
+			constraintName="fk_card_customer"
+			deferrable="false"
+			initiallyDeferred="false"
+			onDelete="NO ACTION"
+			onUpdate="NO ACTION"/>
+  </changeSet>
+  <changeSet author="vmtan" id="1512105854174-3">
+    <delete tableName="card"></delete>
+    <loadData encoding="UTF-8" file="data/0020/card.csv" tableName="card">
+      <column name="card_number" type="STRING"/>
+      <column name="type_code" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+      <column name="card_code" type="STRING"/>
+      <column name="effective_date" type="DATE"/>
+      <column name="expiry_date" type="DATE"/>
+      <column name="customer_id" type="STRING"/>
+    </loadData>
+  </changeSet>
+  <changeSet author="vmtan" id="1512105854174-4">
+    <addColumn tableName="transaction">
+      <column
+        name="card_id"
+        type="varchar(255)"
+      />
+    </addColumn>
+    <addForeignKeyConstraint
+			baseTableName="transaction"
+			baseColumnNames="card_id"
+			referencedColumnNames="card_number"
+			referencedTableName="card"
+			constraintName="fk_card_transaction"
+			deferrable="false"
+			initiallyDeferred="false"
+			onDelete="NO ACTION"
+			onUpdate="NO ACTION"/>
+  </changeSet>
+</databaseChangeLog>

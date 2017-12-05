@@ -14,7 +14,7 @@ VALUES
   '6dad4cb7438d4a308ce49bfb04157245',
   '0f57bb0a-3cd6-47ec-ad95-222222222222',
   'CREATED',
-  '{"previous":{},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", name: "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "ACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null}}',
+  '{"previous":{},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", "name": "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "ACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"}}',
   '2017-11-11 01:18:27',
   NULL
 );
@@ -35,7 +35,7 @@ VALUES
   '6dad4cb7438d4a308ce49bfb04157245',
   '0f57bb0a-3cd6-47ec-ad95-222222222222',
   'ADDED',
-  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", name: "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "ACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", name: "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "ACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null}}',
+  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", "name": "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "ACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", "name": "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "ACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"}}',
   '2017-11-12 01:18:27',
   NULL
 );
@@ -56,7 +56,7 @@ VALUES
   '6dad4cb7438d4a308ce49bfb04157245',
   '0f57bb0a-3cd6-47ec-ad95-222222222222',
   'UPDATED',
-  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", name: "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "ACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", name: "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "INACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null}}',
+  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", "name": "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "ACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", "name": "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "INACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"}}',
   '2017-11-13 01:18:27',
   NULL
 );
@@ -77,7 +77,7 @@ VALUES
   '6dad4cb7438d4a308ce49bfb04157245',
   '0f57bb0a-3cd6-47ec-ad95-222222222222',
   'UPDATED',
-  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", name: "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "INACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", name: "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "ACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null}}',
+  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", "name": "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "INACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-222222222222", "name": "Test merchant 02", "phone": "+84283247248", "email": "test_merchant02@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-222222222222", "status": "ACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"}}',
   '2017-11-14 01:18:27',
   NULL
 );
@@ -98,7 +98,7 @@ VALUES
   '6dad4cb7438d4a308ce49bfb04157245',
   '0f57bb0a-3cd6-47ec-ad95-111111111111',
   'CREATED',
-  '{"previous":{},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", name: "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "ACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null}}',
+  '{"previous":{},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", "name": "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "ACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"}}',
   '2017-11-11 01:18:27',
   NULL
 );
@@ -119,7 +119,7 @@ VALUES
   '6dad4cb7438d4a308ce49bfb04157245',
   '0f57bb0a-3cd6-47ec-ad95-111111111111',
   'ADDED',
-  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", name: "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "ACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", name: "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "ACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null}}',
+  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", "name": "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "ACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", "name": "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "ACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"}}',
   '2017-11-12 01:18:27',
   NULL
 );
@@ -140,7 +140,7 @@ VALUES
   '6dad4cb7438d4a308ce49bfb04157245',
   '0f57bb0a-3cd6-47ec-ad95-111111111111',
   'UPDATED',
-  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", name: "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "ACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", name: "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "INACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null}}',
+  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", "name": "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "ACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", "name": "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "INACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"}}',
   '2017-11-13 01:18:27',
   NULL
 );
@@ -161,7 +161,7 @@ VALUES
   '6dad4cb7438d4a308ce49bfb04157245',
   '0f57bb0a-3cd6-47ec-ad95-111111111111',
   'UPDATED',
-  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", name: "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "INACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", name: "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "ACTIVE", created_at: "2017-11-11 15:45:33", updated_at: null}}',
+  '{"previous":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", "name": "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "INACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"},"next":{"id": "0f57bb0a-3cd6-47ec-ad95-111111111111", "name": "Smart World", "phone": "+84283247247", "email": "test_merchant01@yopmail.com", "address_id": "48c3a336-dc25-49bc-bae1-111111111111", "status": "ACTIVE", "created_at": "2017-11-11 15:45:33", "updated_at": "null"}}',
   '2017-11-14 01:18:27',
   NULL
 );

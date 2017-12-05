@@ -1,0 +1,111 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="mrnhuttrinh" id="249986bd-5eb4-4aa4-8ac4-fd45a4055ae9">
+    <addColumn tableName="merchant_terminal">
+      <column name="name" type="TEXT"/>
+      <column name="status" type="VARCHAR(255)" />
+    </addColumn>
+
+    <createTable tableName="merchant_history">
+      <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_by" type="VARCHAR(255)" />
+      <column name="merchant_id" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="history_type" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="history_details" type="TEXT"/>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+    <addPrimaryKey columnNames="id" constraintName="pk_merchant_history" tableName="merchant_history"/>
+    <addForeignKeyConstraint
+      baseTableName="merchant_history"
+      baseColumnNames="history_type"
+      referencedColumnNames="type"
+      referencedTableName="history_type"
+      constraintName="fk_merchant_history_history_type"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="NO ACTION"
+      onUpdate="NO ACTION"/>
+    <addForeignKeyConstraint
+      baseTableName="merchant_history"
+      baseColumnNames="merchant_id"
+      referencedColumnNames="id"
+      referencedTableName="merchant"
+      constraintName="fk_merchant_history_merchant"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="NO ACTION"
+      onUpdate="NO ACTION"/>
+    <addForeignKeyConstraint
+      baseTableName="merchant_history"
+      baseColumnNames="created_by"
+      referencedColumnNames="id"
+      referencedTableName="user_account"
+      constraintName="fk_created_by_merchant_history_user_account"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="NO ACTION"
+      onUpdate="NO ACTION"/>
+  </changeSet>
+  <changeSet author="mrnhuttrinh" id="8851acd9-cb4a-493e-805d-1520f02ce48b">
+    <update tableName="merchant_terminal">
+      <column name="name">
+        Ứng dụng - SCanteen - Khu A
+      </column>
+      <column name="status">
+        ACTIVE
+      </column>
+      <where>
+        id='288816b1-369d-4d3f-8396-111111111111'
+      </where>
+    </update>
+    <update tableName="merchant_terminal">
+      <column name="name">
+        Ứng dụng - SCanteen - Khu B
+      </column>
+      <column name="status">
+        ACTIVE
+      </column>
+      <where>
+        id='288816b1-369d-4d3f-8396-222222222222'
+      </where>
+    </update>
+    <update tableName="merchant_terminal">
+      <column name="name">
+        Ứng dụng - SCanteen - Khu C
+      </column>
+      <column name="status">
+        ACTIVE
+      </column>
+      <where>
+        id='288816b1-369d-4d3f-8396-333333333333'
+      </where>
+    </update>
+    <update tableName="merchant_terminal">
+      <column name="name">
+        Ứng dụng - SCanteen - Khu D
+      </column>
+      <column name="status">
+        ACTIVE
+      </column>
+      <where>
+        id='288816b1-369d-4d3f-8396-444444444444'
+      </where>
+    </update>
+  </changeSet>
+  <changeSet author="mrnhuttrinh" id="e739bcd6-828e-41f8-913e-ed25e96e201f">
+		<sqlFile encoding="utf8"
+            endDelimiter="\nGO"
+            path="../data/0021/merchant_history.sql"
+            relativeToChangelogFile="true"
+            splitStatements="true"
+            stripComments="true"/>
+  </changeSet>
+</databaseChangeLog>

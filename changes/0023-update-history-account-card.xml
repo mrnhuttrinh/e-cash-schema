@@ -1,0 +1,13 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="vuongtran" id="1512672725521">
+    <addColumn tableName="account_history">
+      <column name="created_by" type="VARCHAR(255)" />
+    </addColumn>
+    <modifyDataType tableName="account_history" columnName="history_details" newDataType="TEXT" />
+    <addColumn tableName="card_history">
+      <column name="created_by" type="VARCHAR(255)" />
+    </addColumn>
+  </changeSet>
+</databaseChangeLog>

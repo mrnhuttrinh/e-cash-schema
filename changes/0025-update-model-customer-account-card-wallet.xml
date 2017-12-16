@@ -1,0 +1,158 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="mrnhuttrinh" id="77bbbc89-06da-4dff-8779-d690bf83abe5-001">
+    <addColumn tableName="card" >
+      <column name="account_id" type="VARCHAR(255)" />
+    </addColumn>
+    <dropForeignKeyConstraint
+      baseTableName="card"
+      constraintName="fk_card_customer" />
+    <addForeignKeyConstraint
+      baseTableName="card"
+      baseColumnNames="account_id"
+      referencedColumnNames="id"
+      referencedTableName="account"
+      constraintName="fk_card_account"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="NO ACTION"
+      onUpdate="NO ACTION"/>
+    <dropColumn tableName="card" columnName="customer_id"/>
+  </changeSet>
+  <changeSet author="mrnhuttrinh" id="77bbbc89-06da-4dff-8779-d690bf83abe5-002">
+    <createTable tableName="wallet">
+      <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="type" type="VARCHAR(255)"/>
+      <column name="name" type="VARCHAR(255)"/>
+      <column name="provider" type="VARCHAR(255)"/>
+      <column name="card_id" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+    <addPrimaryKey
+      columnNames="id"
+      constraintName="pk_wallet"
+      tableName="wallet"/>
+    <addForeignKeyConstraint
+      baseTableName="wallet"
+      baseColumnNames="card_id"
+      referencedColumnNames="card_number"
+      referencedTableName="card"
+      constraintName="fk_wallet_card"
+      deferrable="false"
+      initiallyDeferred="false"
+      onDelete="NO ACTION"
+      onUpdate="NO ACTION"/>
+  </changeSet>
+  <changeSet author="mrnhuttrinh" id="77bbbc89-06da-4dff-8779-d690bf83abe5-003">
+
+    <createTable tableName="e_wallet_type">
+      <column name="type_code" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="TEXT"/>
+      <column name="display_name" type="VARCHAR(255)"/>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+
+    <createTable tableName="e_wallet">
+      <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="type_code" type="TEXT"/>
+      <column name="date_opened" type="DATETIME"/>
+      <column name="currency_code" type="VARCHAR(255)" />
+      <column name="date_closed" type="DATETIME"/>
+      <column name="current_balance" type="DECIMAL" defaultValue="0">
+        <constraints nullable="false"/>
+      </column>
+      <column name="status" type="VARCHAR(255)" />
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+
+    <createTable tableName="e_balance_history">
+    <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="wallet_id" type="VARCHAR(255)" />
+      <column name="date" type="DATETIME" />
+      <column name="balance" type="DECIMAL" defaultValue="0">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+
+    <createTable tableName="e_wallet_history">
+      <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="wallet_id" type="VARCHAR(255)" />
+      <column name="history_type" type="VARCHAR(255)" />
+      <column name="history_details" type="TEXT" />
+      <column name="status" type="VARCHAR(255)"/>
+      <column name="created_by" type="VARCHAR(255)"/>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+
+    <createTable tableName="e_wallet_transaction">
+      <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="wallet_id" type="VARCHAR(255)" />
+      <column name="related_transaction_id" type="VARCHAR(255)" />
+      <column name="type_code" type="VARCHAR(255)" />
+      <column name="date" type="DATETIME" />
+      <column name="amount" type="DECIMAL" defaultValue="0">
+        <constraints nullable="false"/>
+      </column>
+      <column name="status" type="VARCHAR(255)"/>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="mrnhuttrinh" id="77bbbc89-06da-4dff-8779-d690bf83abe5-004">
+    <addPrimaryKey columnNames="type_code" constraintName="pk_e_wallet_type" tableName="e_wallet_type"/>
+    <addPrimaryKey columnNames="id" constraintName="pk_e_wallet" tableName="e_wallet"/>
+    <addPrimaryKey columnNames="id" constraintName="pk_e_wallet_history" tableName="e_wallet_history"/>
+    <addPrimaryKey columnNames="id" constraintName="pk_e_wallet_transaction" tableName="e_wallet_transaction"/>
+    <addPrimaryKey columnNames="id" constraintName="pk_e_balance_history" tableName="e_balance_history"/>
+  </changeSet>
+  <changeSet author="mrnhuttrinh" id="77bbbc89-06da-4dff-8779-d690bf83abe5-005">
+    <addForeignKeyConstraint baseTableName="e_wallet" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="e_wallet_type" constraintName="fk_e_wallet_e_wallet_type" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+    <addForeignKeyConstraint baseTableName="e_wallet_history" baseColumnNames="wallet_id" referencedColumnNames="id" referencedTableName="e_wallet" constraintName="fk_e_wallet_history_e_wallet" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+    <addForeignKeyConstraint baseTableName="e_wallet_transaction" baseColumnNames="wallet_id" referencedColumnNames="id" referencedTableName="e_wallet" constraintName="fk_e_wallet_transaction" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+    <addForeignKeyConstraint baseTableName="e_balance_history" baseColumnNames="wallet_id" referencedColumnNames="id" referencedTableName="e_wallet" constraintName="fk_e_balance_history_e_wallet" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+  </changeSet>
+  <changeSet author="mrnhuttrinh" id="77bbbc89-06da-4dff-8779-d690bf83abe5-006">
+    <delete tableName="card_history"></delete>
+    <delete tableName="card"></delete>
+    <loadData encoding="UTF-8" file="data/0025/card.csv" tableName="card">
+      <column name="card_number" type="STRING"/>
+      <column name="type_code" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+      <column name="card_code" type="STRING"/>
+      <column name="effective_date" type="DATE"/>
+      <column name="expiry_date" type="DATE"/>
+      <column name="account_id" type="STRING"/>
+    </loadData>
+  </changeSet>
+  <changeSet author="mrnhuttrinh" id="77bbbc89-06da-4dff-8779-d690bf83abe5-007">
+    <sqlFile encoding="utf8"
+            endDelimiter="\nGO"
+            path="../data/0025/card_history.sql"
+            relativeToChangelogFile="true"
+            splitStatements="true"
+            stripComments="true"/>
+  </changeSet>
+</databaseChangeLog>

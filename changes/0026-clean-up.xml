@@ -1,0 +1,305 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-002">
+    <addUniqueConstraint tableName="card" columnNames="card_code" constraintName="uk_card_code" deferrable="true" disabled="true" initiallyDeferred="true"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-003">
+    <createTable tableName="card_history_type">
+      <column name="type" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="name" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="VARCHAR(255)"/>
+      <column name="status" type="VARCHAR(255)"/>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-004">
+    <loadData encoding="UTF-8" file="data/0026/card_history_type.csv" tableName="card_history_type">
+      <column name="type" type="STRING"/>
+      <column name="name" type="STRING"/>
+      <column name="description" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="card_history_type"/>
+    </rollback>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-005">
+    <createTable tableName="customer_history_type">
+      <column name="type" type="VARCHAR(255)">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="name" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="VARCHAR(255)"/>
+      <column name="status" type="VARCHAR(255)"/>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-006">
+    <loadData encoding="UTF-8" file="data/0026/customer_history_type.csv" tableName="customer_history_type">
+      <column name="type" type="STRING"/>
+      <column name="name" type="STRING"/>
+      <column name="description" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="customer_history_type"/>
+    </rollback>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-007">
+    <dropForeignKeyConstraint baseTableName="customer_history" constraintName="fk_account_history_type"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-008">
+    <addForeignKeyConstraint
+      baseColumnNames="history_type"
+      baseTableName="customer_history"
+      constraintName="fk_history_type"
+      deferrable="true"
+      initiallyDeferred="true"
+      onDelete="RESTRICT"
+      onUpdate="RESTRICT"
+      referencedColumnNames="type"
+      referencedTableName="customer_history_type"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-009">
+    <dropTable tableName="discount_by_tier" cascadeConstraints="true"/>
+    <dropTable tableName="discount_by_time" cascadeConstraints="true"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-010">
+    <createTable tableName="e_wallet_history_type">
+      <column name="type" type="VARCHAR(255)">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="name" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="VARCHAR(255)"/>
+      <column name="status" type="VARCHAR(255)"/>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-011">
+    <loadData encoding="UTF-8" file="data/0026/e_wallet_history_type.csv" tableName="e_wallet_history_type">
+      <column name="type" type="STRING"/>
+      <column name="name" type="STRING"/>
+      <column name="description" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="e_wallet_history_type"/>
+    </rollback>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-012">
+    <addForeignKeyConstraint
+      baseColumnNames="history_type"
+      baseTableName="e_wallet_history"
+      constraintName="fk_history_type"
+      deferrable="true"
+      initiallyDeferred="true"
+      onDelete="RESTRICT"
+      onUpdate="RESTRICT"
+      referencedColumnNames="type"
+      referencedTableName="e_wallet_history_type"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-013">
+    <createTable tableName="e_wallet_transaction_type">
+      <column name="type_code" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="display_name" type="VARCHAR(255)"/>
+      <column name="description" type="TEXT"/>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+    <addPrimaryKey columnNames="type_code" constraintName="pk_e_wallet_transaction_type" tableName="e_wallet_transaction_type"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-014">
+    <insert tableName="e_wallet_transaction_type">
+      <column name="type_code" value="DEPOSIT"/>
+      <column name="description" value="Gởi tiền"/>
+      <column name="display_name" value="Gởi tiền"/>
+    </insert>
+    <insert tableName="e_wallet_transaction_type">
+      <column name="type_code" value="EXPENSE"/>
+      <column name="description" value="Chi tiêu"/>
+      <column name="display_name" value="Chi tiêu"/>
+    </insert>
+    <insert tableName="e_wallet_transaction_type">
+      <column name="type_code" value="PAYMENT"/>
+      <column name="description" value="Thanh toán"/>
+      <column name="display_name" value="Thanh toán"/>
+    </insert>
+    <insert tableName="e_wallet_transaction_type">
+      <column name="type_code" value="REFUND"/>
+      <column name="description" value="Hoàn tiền"/>
+      <column name="display_name" value="Hoàn tiền"/>
+    </insert>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-015">
+    <addForeignKeyConstraint
+      baseColumnNames="type_code"
+      baseTableName="e_wallet_transaction"
+      constraintName="fk_type_code"
+      deferrable="true"
+      initiallyDeferred="true"
+      onDelete="RESTRICT"
+      onUpdate="RESTRICT"
+      referencedColumnNames="type_code"
+      referencedTableName="e_wallet_transaction_type"/>
+    <addForeignKeyConstraint
+      baseColumnNames="related_transaction_id"
+      baseTableName="e_wallet_transaction"
+      constraintName="fk_related_transaction"
+      deferrable="true"
+      initiallyDeferred="true"
+      onDelete="RESTRICT"
+      onUpdate="RESTRICT"
+      referencedColumnNames="id"
+      referencedTableName="e_wallet_transaction"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-016">
+    <renameTable
+      newTableName="account_event"
+      oldTableName="event"/>
+    <renameTable
+      newTableName="account_event_type"
+      oldTableName="event_type"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-017">
+    <renameTable
+      newTableName="account_history_type"
+      oldTableName="history_type"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-018">
+    <dropTable tableName="merchant_discount_by_tier" cascadeConstraints="true"/>
+    <dropTable tableName="merchant_discount_by_time" cascadeConstraints="true"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-019">
+    <addColumn tableName="merchant_history">
+			<column name="status" type="VARCHAR(255)" />
+		</addColumn>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-020">
+    <createTable tableName="merchant_history_type">
+      <column name="type" type="VARCHAR(255)">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="name" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="VARCHAR(255)"/>
+      <column name="status" type="VARCHAR(255)"/>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-021">
+    <loadData encoding="UTF-8" file="data/0026/merchant_history_type.csv" tableName="merchant_history_type">
+      <column name="type" type="STRING"/>
+      <column name="name" type="STRING"/>
+      <column name="description" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="merchant_history_type"/>
+    </rollback>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-022">
+    <addForeignKeyConstraint
+      baseColumnNames="history_type"
+      baseTableName="merchant_history"
+      constraintName="fk_history_type"
+      deferrable="true"
+      initiallyDeferred="true"
+      onDelete="RESTRICT"
+      onUpdate="RESTRICT"
+      referencedColumnNames="type"
+      referencedTableName="merchant_history_type"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-023">
+    <dropForeignKeyConstraint baseTableName="merchant_history" constraintName="fk_merchant_history_history_type"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-024">
+    <addColumn tableName="transaction">
+			<column name="status" type="VARCHAR(255)" />
+		</addColumn>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-025">
+    <addForeignKeyConstraint
+      baseColumnNames="merchant_id"
+      baseTableName="transaction_detail"
+      constraintName="fk_merchant"
+      deferrable="true"
+      initiallyDeferred="true"
+      onDelete="RESTRICT"
+      onUpdate="RESTRICT"
+      referencedColumnNames="id"
+      referencedTableName="merchant"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-026">
+    <addColumn tableName="user_history">
+			<column name="status" type="VARCHAR(255)" />
+		</addColumn>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-027">
+    <createTable tableName="user_history_type">
+      <column name="type" type="VARCHAR(255)">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="name" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="VARCHAR(255)"/>
+      <column name="status" type="VARCHAR(255)"/>
+      <column name="created_at" type="DATETIME"/>
+      <column name="updated_at" type="DATETIME"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-028">
+    <loadData encoding="UTF-8" file="data/0026/user_history_type.csv" tableName="user_history_type">
+      <column name="type" type="STRING"/>
+      <column name="name" type="STRING"/>
+      <column name="description" type="STRING"/>
+      <column name="status" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+      <column name="updated_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="user_history_type"/>
+    </rollback>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-029">
+    <addForeignKeyConstraint
+      baseColumnNames="history_type"
+      baseTableName="user_history"
+      constraintName="fk_history_type"
+      deferrable="true"
+      initiallyDeferred="true"
+      onDelete="RESTRICT"
+      onUpdate="RESTRICT"
+      referencedColumnNames="type"
+      referencedTableName="user_history_type"/>
+  </changeSet>
+  <changeSet author="vmtan" id="6bf07a81-f59b-4839-863c-b7cc93d4e343-030">
+    <dropForeignKeyConstraint baseTableName="user_history" constraintName="fk_user_account_history_type"/>
+  </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,7 @@
+type,name,description,status,created_at,updated_at
+CREATED,Created,Khởi tạo,null,null,null
+ADDED,Added,Thêm,null,null,null
+DELETED,Deleted,Bị xóa,null,null,null
+LOCKED,Locked,Bị khóa,null,null,null
+UPDATED,Updated,Chỉnh sửa,null,null,null
+UNLOCKED,Unlocked,Được mở khóa,null,null,null

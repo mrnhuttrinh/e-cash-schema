@@ -1,0 +1,18 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="vmtan" id="1513873019841">
+    <insert tableName="e_wallet_type">
+      <column name="type_code" value="DEFAULT"/>
+      <column name="description" value="Default"/>
+      <column name="display_name" value="Default"/>
+    </insert>
+  </changeSet>
+  <changeSet author="vmtan" id="1513873019841-1">
+    <addColumn tableName="wallet">
+      <column name="ref_id" type="VARCHAR(255)"/>
+    </addColumn>
+  </changeSet>
+</databaseChangeLog>

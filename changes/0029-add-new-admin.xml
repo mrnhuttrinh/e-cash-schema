@@ -35,4 +35,10 @@
       <column name="is_2fa" value="0"/>
     </insert>
   </changeSet>
+  <changeSet author="vmtan" id="1513873019841-new1">
+    <update schemaName="public" tableName="user_account">
+      <column name="enabled"
+        value="1" />
+    </update>
+  </changeSet>
 </databaseChangeLog>

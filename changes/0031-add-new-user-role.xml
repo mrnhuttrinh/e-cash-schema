@@ -9,7 +9,7 @@
       <column name="role_id" value="70be5dd3841c4aa5a3c17841cb2e00af"/>
     </insert>
     <insert tableName="users_roles">
-      <column name="id" value="6dad4cb7438d4a308ce49bfb04157250"/>
+      <column name="user_id" value="6dad4cb7438d4a308ce49bfb04157250"/>
       <column name="role_id" value="70be5dd3841c4aa5a3c17841cb2e00af"/>
     </insert>
   </changeSet>

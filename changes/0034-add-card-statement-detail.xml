@@ -1,0 +1,28 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="vlmduy" id="1513873019841-new-card-statement-detail">
+    <createTable tableName="card_statement_detail">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+      <column name="card_statement_id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+      <column name="transaction_date" type="DATETIME" />
+      <column name="description" type="TEXT" />
+			<column name="type_code" type="VARCHAR(255)" />
+      <column name="transaction_amount" type="NUMERIC" />
+      <column name="created_by" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+  </changeSet>
+  <changeSet author="vlmduy" id="1513873019841-new-card-merchant-constraint">
+    <addPrimaryKey columnNames="id" constraintName="pk_card_statement_detail" tableName="card_statement_detail"/>
+    <addForeignKeyConstraint baseTableName="card_statement_detail" baseColumnNames="card_statement_id" referencedColumnNames="id" referencedTableName="card_statement" constraintName="fk_card-statement-detail_card-statement" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+    <addForeignKeyConstraint baseTableName="card_statement_detail" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="transaction_type" constraintName="fk_card_statement_detail_transaction-type" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+  </changeSet>
+</databaseChangeLog>

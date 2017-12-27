@@ -1,0 +1,49 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="tcvuong" id="1514383265141">
+    <addColumn tableName="permission">
+      <column name="display_name" type="TEXT" />
+    </addColumn>
+    <dropColumn tableName="permission" columnName="catagory" ></dropColumn>
+  </changeSet>
+  <changeSet author="tcvuong" id="1514383265142">
+    <delete tableName="roles_permissions">
+      <where>role_id='ff8081815fa1bc2a015fa1bc64870003'</where>
+    </delete>
+    <delete tableName="roles_permissions">
+      <where>role_id='70be5dd3841c4aa5a3c17841cb2e00af'</where>
+    </delete>
+    <delete tableName="permission">
+      <where>id='ff8081815fa1bc2a015fa1bc64630000'</where>
+    </delete>
+    <delete tableName="permission">
+      <where>id='ff8081815fa1bc2a015fa1bc647d0001'</where>
+    </delete>
+    <delete tableName="permission">
+      <where>id='ff8081815fa1bc2a015fa1bc64800002'</where>
+    </delete>
+  </changeSet>
+  <changeSet author="tcvuong" id="1514383265143">
+    <loadData encoding="UTF-8" file="data/0035/permission.csv" tableName="permission">
+      <column name="id" type="STRING"/>
+      <column name="display_name" type="STRING"/>
+      <column name="name" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="permission"/>
+    </rollback>
+  </changeSet>
+  <changeSet author="tcvuong" id="1514383265144">
+    <loadData encoding="UTF-8" file="data/0035/roles_permissions.csv" tableName="roles_permissions">
+      <column name="role_id" type="STRING"/>
+      <column name="permission_id" type="STRING"/>
+    </loadData>
+    <rollback>
+      <delete tableName="roles_permissions"/>
+    </rollback>
+  </changeSet>
+</databaseChangeLog>

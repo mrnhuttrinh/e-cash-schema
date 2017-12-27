@@ -1,0 +1,28 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="vlmduy" id="1513873019841-new-card-statement">
+    <createTable tableName="card_statement">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+      <column name="card_number" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+      <column name="company" type="TEXT" />
+			<column name="currency_code" type="VARCHAR(255)" />
+      <column name="due_date" type="DATETIME" />
+      <column name="payment_amount" type="NUMERIC" />
+      <column name="current_amount" type="NUMERIC" />
+      <column name="created_by" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+  </changeSet>
+  <changeSet author="vlmduy" id="1513873019841-new-card-merchant-constraint">
+    <addPrimaryKey columnNames="id" constraintName="pk_card_statement" tableName="card_statement"/>
+    <addForeignKeyConstraint baseTableName="card_statement" baseColumnNames="card_number" referencedColumnNames="card_number" referencedTableName="card" constraintName="fk_card-statement_card" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+  </changeSet>
+</databaseChangeLog>

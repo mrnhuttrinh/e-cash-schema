@@ -1,0 +1,9 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="vlmduy" id="1513873019841-alter-card-statement-fk">
+    <addForeignKeyConstraint baseTableName="card_statement" baseColumnNames="currency_code" referencedColumnNames="code" referencedTableName="currency_code" constraintName="fk_card-statement_currency-code" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+  </changeSet>
+</databaseChangeLog>

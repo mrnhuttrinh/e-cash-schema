@@ -1,0 +1,23 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="vlmduy" id="1513873019841-transaction-data">
+    <loadData encoding="UTF-8" file="data/0028/transaction.csv" tableName="transaction">
+      <column name="id" type="STRING" />
+			<column name="account_id" type="STRING" />
+			<column name="related_transaction_id" type="STRING" />
+			<column name="type_code" type="STRING" />
+			<column name="date" type="DATE" />
+			<column name="amount" type="NUMERIC" />
+			<column name="created_at" type="DATE" />
+			<column name="updated_at" type="DATE" />
+      <column name="card_id" type="STRING"/>
+      <column name="status" type="STRING"/>
+    </loadData>
+    <rollback>
+      <delete tableName="transaction"/>
+    </rollback>
+  </changeSet>
+</databaseChangeLog>

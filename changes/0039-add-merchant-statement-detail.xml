@@ -1,0 +1,28 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="vlmduy" id="1513873019841-new-merchant-statement-detail">
+    <createTable tableName="merchant_statement_detail">
+			<column name="id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+      <column name="merchant_statement_id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="type_code" type="VARCHAR(255)" />
+      <column name="transaction_date" type="DATETIME" />
+      <column name="description" type="TEXT" />
+      <column name="transaction_amount" type="NUMERIC" />
+      <column name="created_by" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+  </changeSet>
+  <changeSet author="vlmduy" id="1513873019841-new-merchant-statement-detail-constraint">
+    <addPrimaryKey columnNames="id" constraintName="pk_merchant_statement_detail" tableName="merchant_statement_detail"/>
+    <addForeignKeyConstraint baseTableName="merchant_statement_detail" baseColumnNames="merchant_statement_id" referencedColumnNames="id" referencedTableName="merchant_statement" constraintName="fk_merchatn-statement-detail_merchant-statement" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+    <addForeignKeyConstraint baseTableName="merchant_statement_detail" baseColumnNames="type_code" referencedColumnNames="type_code" referencedTableName="transaction_type" constraintName="fk_merchatn-statement-detail_transaction-type" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" />
+  </changeSet>
+</databaseChangeLog>

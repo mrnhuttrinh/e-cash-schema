@@ -1,3 +1,4 @@
+SET datestyle TO "ISO, MDY";
 insert into customer_address (id, customer_id, address_id, status, created_at, updated_at) values ('b5a56261-3d6f-4e94-98d6-a0e1f107a88a', 'a8f95061-c135-4df1-9181-74a481739831', '48c3a336-dc25-49bc-bae1-d3425ae23b0d', 'ACTIVE', '2017-12-27 15:06:03', '2017-12-27 15:06:03');
 insert into customer_address (id, customer_id, address_id, status, created_at, updated_at) values ('8e1e3db7-b87c-4fb4-8294-8af97b34e752', 'e0c6b87a-1e98-4be5-bc9c-719ea9eda25d', '48c3a336-dc25-49bc-bae1-d3425ae23b0d', 'ACTIVE', '2017-01-27 05:46:25', '2017-01-27 05:46:25');
 insert into customer_address (id, customer_id, address_id, status, created_at, updated_at) values ('0382afd6-59c2-4beb-a551-e2e346ef666e', '67622ec5-0752-46a2-8789-1560474dadc9', 'd7dfd7e9-fae5-465e-bffa-1720518c5b33', 'ACTIVE', '2017-06-27 03:29:57', '2017-06-27 03:29:57');

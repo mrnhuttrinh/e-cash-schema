@@ -1,3 +1,4 @@
+SET datestyle TO "ISO, MDY";
 insert into address (id, type_code, line_1, line_2, city, zip_code, state_province, country, status, created_at, updated_at) values ('f8a5b90c-0b0b-4e56-a22d-a2d485f36989', 'DEFAULT', '35', 'Truax', 'Tucson', '85748', 'Arizona', 'us', 'ACTIVE', '2018-05-26 10:29:47', '2018-05-26 10:29:47');
 insert into address (id, type_code, line_1, line_2, city, zip_code, state_province, country, status, created_at, updated_at) values ('41310485-d21d-4298-b3f4-0e41a15ca23b', 'DEFAULT', '74', 'Badeau', 'Washington', '20036', 'District of Columbia', 'us', 'ACTIVE', '2018-05-16 05:33:39', '2018-05-16 05:33:39');
 insert into address (id, type_code, line_1, line_2, city, zip_code, state_province, country, status, created_at, updated_at) values ('d7dfd7e9-fae5-465e-bffa-1720518c5b33', 'DEFAULT', '5139', 'Sage', 'Houston', '77212', 'Texas', 'us', 'ACTIVE', '2018-06-24 02:56:39', '2018-06-24 02:56:39');

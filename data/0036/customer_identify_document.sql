@@ -1,3 +1,4 @@
+SET datestyle TO "ISO, MDY";
 insert into customer_identify_document (id, customer_id, identify_document_id, status, created_at, updated_at) values ('f7b40ba1-1d13-41d0-82b3-fcd2dbf8b14b', '9ac0ed9c-48d9-4ea3-8e3c-e7b6d388366c', '5c5c92fc-365a-48f5-b439-59330240943d', 'ACTIVE', '2017-01-28 14:01:32', '2017-02-01 23:44:09');
 insert into customer_identify_document (id, customer_id, identify_document_id, status, created_at, updated_at) values ('2004a0a4-97cd-4850-9e7c-8d8cac8e4e4e', 'fb2e2828-2d4e-41ee-aaff-5d341848521d', '1ecf9f13-9088-4a02-8244-3d6c2d4d1fc9', 'ACTIVE', '2017-03-07 02:44:01', '2017-09-21 00:54:16');
 insert into customer_identify_document (id, customer_id, identify_document_id, status, created_at, updated_at) values ('3412a849-9db3-417e-b2a5-a6478a64d27e', '00c0973f-d91d-4f5d-86d4-bd98bbdb58c3', 'de859329-6eeb-4530-bf94-cbe201c07b3c', 'ACTIVE', '2017-03-30 07:20:23', '2017-07-15 15:05:52');

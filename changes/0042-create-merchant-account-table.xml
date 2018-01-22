@@ -1,0 +1,32 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+		<changeSet author="nthehung" id="425682557802">
+				<createTable tableName="merchant_account">
+						<column name="merchant_id" type="VARCHAR(255)">
+								<constraints nullable="false" />
+						</column>
+						<column name="account_id" type="VARCHAR(255)">
+								<constraints nullable="false" />
+						</column>
+						<column name="description" type="TEXT" />
+						<column name="created_at" type="DATETIME" />
+						<column name="updated_at" type="DATETIME" />
+				</createTable>
+		</changeSet>
+		<changeSet author="nthehung" id="420427825782">
+				<addForeignKeyConstraint baseTableName="merchant_account"
+						baseColumnNames="merchant_id" referencedColumnNames="id"
+						referencedTableName="merchant" constraintName="fk_merchant_account-merchant"
+						deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+						onUpdate="NO ACTION" />
+				<addForeignKeyConstraint baseTableName="merchant_account"
+						baseColumnNames="account_id" referencedColumnNames="id"
+						referencedTableName="account" constraintName="fk_merchant_account-account"
+						deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+						onUpdate="NO ACTION" />
+				<addUniqueConstraint tableName="merchant_account"
+						columnNames="merchant_id, account_id" constraintName="unique_merchant_account_key"
+						deferrable="true" disabled="true" initiallyDeferred="true" />
+		</changeSet>
+</databaseChangeLog>

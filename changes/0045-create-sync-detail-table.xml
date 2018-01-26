@@ -1,7 +1,7 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
 		xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
-		<changeSet author="nthehung" id="4328538045">
+		<changeSet author="nthehung" id="4528538045">
 				<createTable tableName="scms_sync_detail">
 						<column name="id" type="VARCHAR(255)">
 								<constraints nullable="false" />
@@ -9,11 +9,15 @@
 						<column name="personalization_code" type="VARCHAR(255)">
 								<constraints nullable="false" />
 						</column>
-						<column name="sync_source" type="VARCHAR(255)"/>
-						<column name="target_object" type="VARCHAR(255)"/>
-						<column name="target_id" type="VARCHAR(255)"/>
+						<column name="sync_source" type="VARCHAR(255)" />
+						<column name="target_object" type="VARCHAR(255)" />
+						<column name="target_id" type="VARCHAR(255)" />
 						<column name="created_at" type="DATETIME" />
 						<column name="updated_at" type="DATETIME" />
 				</createTable>
+		</changeSet>
+		<changeSet author="nthehung" id="45233338045">
+				<addPrimaryKey columnNames="id" constraintName="pk_scms_sync_detail"
+						tableName="scms_sync_detail" />
 		</changeSet>
 </databaseChangeLog>

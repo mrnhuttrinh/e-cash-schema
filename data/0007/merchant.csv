@@ -1,3 +1,0 @@
-id,name,phone,email,address_id,status,created_at,updated_at
-0f57bb0a-3cd6-47ec-ad95-111111111111,Test merchant 01,+84283247247,test_merchant01@yopmail.com,48c3a336-dc25-49bc-bae1-111111111111,ACTIVE,2017-11-11 15:41:57.216000,2017-11-11 15:41:58.001000
-0f57bb0a-3cd6-47ec-ad95-222222222222,Test merchant 02,+84283247248,test_merchant02@yopmail.com,48c3a336-dc25-49bc-bae1-222222222222,ACTIVE,2017-11-11 15:41:57.216000,2017-11-11 15:41:58.001000

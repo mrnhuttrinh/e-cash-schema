@@ -72,18 +72,5 @@
     </rollback>
   </changeSet>
 
-  <changeSet author="mrnhuttrinh" id="c6bb6f90-b12c-4bd7-b463-6b81d848e244">
-    <loadData encoding="UTF-8" file="data/0018/user_account_history.csv" tableName="user_history">
-      <column name="id" type="STRING"/>
-      <column name="created_by" type="STRING"/>
-      <column name="user_id" type="STRING"/>
-      <column name="history_type" type="STRING"/>
-      <column name="created_at" type="DATE"/>
-      <column name="updated_at" type="DATE"/>
-    </loadData>
-    <rollback>
-      <delete tableName="user_history"/>
-    </rollback>
-  </changeSet>
 
 </databaseChangeLog>

@@ -51,20 +51,7 @@
 			onDelete="NO ACTION"
 			onUpdate="NO ACTION"/>
   </changeSet>
-  <changeSet author="vmtan" id="1512105854174-3">
-    <delete tableName="card"></delete>
-    <loadData encoding="UTF-8" file="data/0020/card.csv" tableName="card">
-      <column name="card_number" type="STRING"/>
-      <column name="type_code" type="STRING"/>
-      <column name="status" type="STRING"/>
-      <column name="created_at" type="DATE"/>
-      <column name="updated_at" type="DATE"/>
-      <column name="card_code" type="STRING"/>
-      <column name="effective_date" type="DATE"/>
-      <column name="expiry_date" type="DATE"/>
-      <column name="customer_id" type="STRING"/>
-    </loadData>
-  </changeSet>
+  
   <changeSet author="vmtan" id="1512105854174-4">
     <addColumn tableName="transaction">
       <column

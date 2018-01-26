@@ -1,3 +1,0 @@
-id,type_code,line_1,line_2,city,zip_code,state_province,country,status,created_at,updated_at
-48c3a336-dc25-49bc-bae1-111111111111,DEFAULT,03 Nguyễn Huệ,"Phường Bến Nghé, Q1",TP HCM,0,HCM,vn,ACTIVE,2017-11-11 12:04:47.000000,2017-11-11 12:02:54.000000
-48c3a336-dc25-49bc-bae1-222222222222,DEFAULT,05 Nguyễn Huệ,"Phường Bến Nghé, Q1",TP HCM,0,HCM,vn,ACTIVE,2017-11-11 12:04:47.000000,2017-11-11 12:02:54.000000

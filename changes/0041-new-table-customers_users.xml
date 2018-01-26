@@ -21,14 +21,4 @@
             deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
             onUpdate="NO ACTION" />
   </changeSet>
-  <changeSet author="mrnhuttrinh" id="1516296492458-init-sample-data">
-     <insert tableName="customers_users">
-      <column name="customer_id" value="00059604-1aff-4df2-b554-9b425d81b0bc"/>
-      <column name="user_id" value="6dad4cb7438d4a308ce49bfb04157245"/>
-    </insert>
-    <insert tableName="customers_users">
-      <column name="customer_id" value="007cced6-da2d-4c5d-824b-ed294f43cc44"/>
-      <column name="user_id" value="b9c5140149dc4b25a26b372240ffa555"/>
-    </insert>
-  </changeSet>
 </databaseChangeLog>

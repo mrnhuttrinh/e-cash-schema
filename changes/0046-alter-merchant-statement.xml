@@ -1,0 +1,14 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="vlmduy" id="1514873019841-alter-merchant-statement">
+     <addColumn
+            schemaName="public"
+            tableName="merchant_statement">
+        <column name="total_transaction" type="BIGINT"/>
+        <column name="status" type="TEXT"/>
+    </addColumn>
+  </changeSet>
+</databaseChangeLog>

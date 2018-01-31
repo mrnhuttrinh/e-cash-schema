@@ -1,0 +1,17 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+  <changeSet author="nthehung" id="486372767936">
+    <loadData encoding="UTF-8" file="data/0048/permission.csv" tableName="permission">
+      <column name="id" type="STRING"/>
+      <column name="display_name" type="STRING"/>
+      <column name="name" type="STRING"/>
+      <column name="created_at" type="DATE"/>
+    </loadData>
+    <rollback>
+      <delete tableName="permission"/>
+    </rollback>
+  </changeSet>
+</databaseChangeLog>

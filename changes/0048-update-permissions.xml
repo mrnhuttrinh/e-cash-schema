@@ -3,7 +3,7 @@
   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
-  <changeSet author="nthehung" id="486372767936">
+  <changeSet author="nthehung" id="486372767936491">
     <loadData encoding="UTF-8" file="data/0048/permission.csv" tableName="permission">
       <column name="id" type="STRING"/>
       <column name="display_name" type="STRING"/>
@@ -12,6 +12,15 @@
     </loadData>
     <rollback>
       <delete tableName="permission"/>
+    </rollback>
+  </changeSet>
+  <changeSet author="nthehung" id="486372767936664">
+    <loadData encoding="UTF-8" file="data/0048/roles_permissions.csv" tableName="roles_permissions">
+      <column name="role_id" type="STRING"/>
+      <column name="permission_id" type="STRING"/>
+    </loadData>
+    <rollback>
+      <delete tableName="roles_permissions"/>
     </rollback>
   </changeSet>
 </databaseChangeLog>

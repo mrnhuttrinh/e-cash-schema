@@ -1,0 +1,3 @@
+id,display_name,name,created_at,updated_at
+1ea76805-7d2c-4203-9eff-cb979d906a82,Create Customer,CUSTOMER_DETAILS/CREATE,2018-01-31 00:00:00,2018-01-31 00:00:00
+bd7d08c6-d572-4adb-a748-8677452cd0f2,Update Customer,CUSTOMER_DETAILS/UPDATE,2018-01-31 00:00:00,2018-01-31 00:00:00
